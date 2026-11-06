@@ -443,6 +443,9 @@
       setTimeout(settle, 0);
     }
     window.scrollTo({ top: top, behavior: smooth ? 'smooth' : 'instant' });
+    // Keep focus on the aria-labelledby page region: screen readers announce the
+    // destination and keyboard users retain a visible :focus-visible outline.
+    // Scoped caret-color CSS prevents caret-browsing paint in noneditable page text.
     p.el.focus({ preventScroll: true });
   }
 

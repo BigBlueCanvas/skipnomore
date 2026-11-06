@@ -7,7 +7,7 @@
 /* ---------- Fonts (self-hosted, OFL) ---------- */
 @font-face {
   font-family: "Archivo";
-  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062135") format("woff2");
+  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062305") format("woff2");
   font-weight: 100 900;
   font-stretch: 62% 125%;
   font-style: normal;
@@ -15,14 +15,14 @@
 }
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611062135") format("woff2");
+  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611062305") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Bangers";
-  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611062135") format("woff2");
+  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611062305") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1237,6 +1237,10 @@ button { font: inherit; color: inherit; }
 .demo__btn[aria-pressed="true"] { background: var(--red-ui); color: #fff; }
 .demo__btn[data-mode="with"][aria-pressed="true"] { background: var(--white); color: var(--ink); }
 .demo__screen {
+  /* The player is narrower than .page__fit; center the constrained block itself.
+     Auto margins work before/after fit zoom, in both demo states and all widths. */
+  width: 100%;
+  margin-inline: auto;
   max-width: 860px !important;
   background: #0b101c;
   border: var(--bw) solid var(--ink);
@@ -2318,7 +2322,14 @@ html.js {
 html, html.js { scroll-padding-top: var(--nav-h); }
 [data-page], .chapter, .download { scroll-margin-top: 0; }
 .js [data-page] { scroll-snap-align: start; }
+/* Navigation focuses a named region for assistive technology. Browser caret browsing
+   can paint an insertion caret in its static text: hide only that presentation here,
+   never editable carets or keyboard focus. */
+[data-page] { caret-color: transparent; }
+[data-page] :is(input, textarea, [contenteditable]:not([contenteditable="false"])),
+[data-page] [contenteditable]:not([contenteditable="false"]) * { caret-color: auto; }
 [data-page]:focus { outline: none; }
+[data-page]:focus-visible { outline: 2px solid var(--white); outline-offset: -4px; }
 .page { height: calc(100vh - var(--nav-h) - var(--bar-h)); height: calc(100svh - var(--nav-h) - var(--bar-h)); min-height: 400px; }
 
 /* replay / reset: class toggles with transitions switched off for an instant */
