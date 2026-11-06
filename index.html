@@ -1,1 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stop YouTube Music Skipping &amp; Pausing | Skip Solution</title>
+<meta name="description" content="YouTube Music keeps skipping songs or pausing in a background tab? This Chrome, Firefox, Edge, Brave &amp; Opera extension stops it. 7-day free trial.">
+<meta name="theme-color" content="#121827">
+<!-- Domain-dependent values (canonical, hreflang, og/twitter, JSON-LD, robots.txt, sitemap.xml) are rewritten by tools/set_domain.py from CONFIG.siteUrl in js/main.js. -->
+<link rel="canonical" href="https://skipnomore.site/">
+<link rel="alternate" hreflang="en" href="https://skipnomore.site/">
+<link rel="alternate" hreflang="x-default" href="https://skipnomore.site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YouTube Music Skip Solution">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Stop YouTube Music skipping &amp; pausing in background tabs">
+<meta property="og:description" content="Keeps YouTube and YouTube Music playing in background tabs. No random skips, no freezes, no &ldquo;Video paused. Continue watching?&rdquo;.">
+<meta property="og:url" content="https://skipnomore.site/">
+<meta property="og:image" content="https://skipnomore.site/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YouTube Music Skip Solution: Your music. Uninterrupted.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stop YouTube Music skipping &amp; pausing">
+<meta name="twitter:description" content="Keeps YouTube and YouTube Music playing in background tabs. No random skips, no freezes, no pause prompts.">
+<meta name="twitter:image" content="https://skipnomore.site/assets/img/og-image.jpg">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=202611062135">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=202611062135">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=202611062135">
+<link rel="manifest" href="site.webmanifest">
 
+<!-- Font preloads are injected only over http(s): a CORS font preload fails on file:// (fonts still load there via @font-face). -->
+<script>
+  document.documentElement.classList.add('js');
+  if (location.protocol !== 'file:') {
+    ['assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062135', 'assets/fonts/inter-latin-wght-normal.woff2?v=202611062135'].forEach(function (href) {
+      var l = document.createElement('link');
+      l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = href;
+      document.head.appendChild(l);
+    });
+  }
+</script>
+<!-- ============ ANALYTICS: Umami Cloud (cookieless, no consent banner) ============
+     Paste the Website ID from cloud.umami.is into UMAMI_WEBSITE_ID to switch it on.
+     Empty = analytics off: nothing is loaded. UMAMI_DOMAINS is set by tools/set_domain.py,
+     so local / prototype visits are not counted. Setup steps: SEO_SETUP.md. -->
+<script>
+  var UMAMI_WEBSITE_ID = "";
+  var UMAMI_DOMAINS = "skipnomore.site";
+  if (UMAMI_WEBSITE_ID) {
+    (function () {
+      var s = document.createElement('script');
+      s.defer = true;
+      s.src = 'https://cloud.umami.is/script.js';
+      s.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
+      s.setAttribute('data-domains', UMAMI_DOMAINS);
+      document.head.appendChild(s);
+    })();
+  }
+</script>
+<link rel="preload" as="image" type="image/webp"
+      imagesrcset="assets/img/panel-01-828.webp?v=202611062135 828w, assets/img/panel-01-1280.webp?v=202611062135 1280w, assets/img/panel-01-1920.webp?v=202611062135 1920w, assets/img/panel-01-2560.webp?v=202611062135 2560w, assets/img/panel-01-3840.webp?v=202611062135 3840w"
+      imagesizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw" fetchpriority="high">
+
+<link rel="stylesheet" href="css/style.css?v=202611062135">
+
+<!-- Pricing, store URLs and contact live in CONFIG at the top of js/main.js.
+     Values written in this HTML are no-JS fallbacks only. -->
+<script type="application/ld+json" id="ld-app">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Music Skip Solution",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome, Firefox, Edge, Brave, Opera",
+  "description": "Browser extension that stops YouTube and YouTube Music from skipping songs, pausing in background tabs and asking \"Video paused. Continue watching?\".",
+  "image": "https://skipnomore.site/assets/img/og-image.jpg",
+  "url": "https://skipnomore.site/",
+  "downloadUrl": [
+    "https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld",
+    "https://addons.mozilla.org/en-US/firefox/addon/youtube-music-skip-solution/"
+  ],
+  "author": { "@type": "Organization", "name": "BigBlueCanvas", "@id": "https://skipnomore.site/#org" },
+  "offers": [
+    { "@type": "Offer", "name": "Free install with 7-day trial", "price": "0", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Lifetime unlock (one-time in-app purchase)", "price": "1.99", "priceCurrency": "USD" }
+  ]
+}
+</script>
+<script type="application/ld+json" id="ld-org">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://skipnomore.site/#org",
+  "name": "BigBlueCanvas",
+  "email": "bigbluecanvas@gmail.com",
+  "url": "https://skipnomore.site/",
+  "logo": "https://skipnomore.site/assets/img/icon-512.png"
+}
+</script>
+<script type="application/ld+json" id="ld-faq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "YouTube Music keeps skipping songs. Will this fix it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That’s exactly what it’s for. When YouTube Music plays in a background tab, the browser can throttle or unload the tab and the playlist starts jumping to the next track again and again. The extension keeps the tab awake so the current song plays to the end."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does YouTube pause in a background tab and ask “Video paused. Continue watching?”",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YouTube shows that prompt when it thinks nobody is listening, and browsers slow down tabs you’re not looking at. Skip Solution answers the prompt automatically and stops the throttling, so YouTube Music stops stopping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with YouTube Music?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It works on both YouTube and YouTube Music: it keeps playback going in background tabs, answers the “Continue watching?” prompt for you, and stops the automatic track-skipping and tab-unloading bugs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it collect my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. No personal data, browsing history or analytics are collected. Page URLs are checked locally, on your device, only to detect youtube.com. Payments are handled by ExtensionPay and Stripe. Permissions used: storage, scripting, youtube.com and extensionpay.com. Read the full privacy policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install is free. Start your 7-day trial from the extension popup; after that, unlock lifetime access with a one-time $1.99 in-app purchase. No subscription, no recurring charges. Payment runs through ExtensionPay with Stripe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on Microsoft Edge, Brave or Opera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. They are Chromium browsers and install the Chrome version from the Chrome Web Store: Edge: open the Chrome Web Store page, click “Allow extensions from other stores” when Edge asks, then “Get” / “Add to Chrome”. Brave: open the Chrome Web Store page and click “Add to Brave” / “Add to Chrome”. Opera: first install Opera’s official Install Chrome Extensions add-on, then open the Chrome Web Store page and click “Add to Opera”."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on Firefox for Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, on Firefox for Android 142 or newer. Install it from Firefox Add-ons, the same as on desktop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it use much battery or CPU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It’s lightweight and only runs on YouTube tabs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Other questions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Write to bigbluecanvas@gmail.com and we’ll get back to you."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Browser logos, monochrome. Chrome, Firefox, Edge: Bootstrap Icons (MIT, (c) The Bootstrap Authors).
+     Brave, Opera: Simple Icons (CC0). Used only to label links to official stores. -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="mark-chrome" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M16 8a8 8 0 0 1-7.022 7.94l1.902-7.098a3 3 0 0 0 .05-1.492A3 3 0 0 0 10.237 6h5.511A8 8 0 0 1 16 8M0 8a8 8 0 0 0 7.927 8l1.426-5.321a3 3 0 0 1-.723.255 3 3 0 0 1-1.743-.147 3 3 0 0 1-1.043-.7L.633 4.876A8 8 0 0 0 0 8m5.004-.167L1.108 3.936A8.003 8.003 0 0 1 15.418 5H8.066a3 3 0 0 0-1.252.243 2.99 2.99 0 0 0-1.81 2.59M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/></symbol>
+  <symbol id="mark-firefox" viewBox="0 0 16 16"><path fill="currentColor" d="M13.384 3.408c.535.276 1.22 1.152 1.556 1.963a8 8 0 0 1 .503 3.897l-.009.077-.026.224A7.758 7.758 0 0 1 .006 8.257v-.04q.025-.545.114-1.082c.01-.074.075-.42.09-.489l.01-.051a6.6 6.6 0 0 1 1.041-2.35q.327-.465.725-.87.35-.358.758-.65a1.5 1.5 0 0 1 .26-.137c-.018.268-.04 1.553.268 1.943h.003a5.7 5.7 0 0 1 1.868-1.443 3.6 3.6 0 0 0 .021 1.896q.105.07.2.152c.107.09.226.207.454.433l.068.066.009.009a2 2 0 0 0 .213.18c.383.287.943.563 1.306.741.201.1.342.168.359.193l.004.008c-.012.193-.695.858-.933.858-2.206 0-2.564 1.335-2.564 1.335.087.997.714 1.839 1.517 2.357a4 4 0 0 0 .439.241q.114.05.228.094c.325.115.665.18 1.01.194 3.043.143 4.155-2.804 3.129-4.745v-.001a3 3 0 0 0-.731-.9 3 3 0 0 0-.571-.37l-.003-.002a2.68 2.68 0 0 1 1.87.454 3.92 3.92 0 0 0-3.396-1.983q-.116.001-.23.01l-.042.003V4.31h-.002a4 4 0 0 0-.8.14 7 7 0 0 0-.333-.314 2 2 0 0 0-.2-.152 4 4 0 0 1-.088-.383 5 5 0 0 1 1.352-.289l.05-.003c.052-.004.125-.01.205-.012C7.996 2.212 8.733.843 10.17.002l-.003.005.003-.001.002-.002h.002l.002-.002h.015a.02.02 0 0 1 .012.007 2.4 2.4 0 0 0 .206.48q.09.153.183.297c.49.774 1.023 1.379 1.543 1.968.771.874 1.512 1.715 2.036 3.02l-.001-.013a8 8 0 0 0-.786-2.353"/></symbol>
+  <symbol id="mark-edge" viewBox="0 0 16 16"><path fill="currentColor" d="M9.482 9.341c-.069.062-.17.153-.17.309 0 .162.107.325.3.456.877.613 2.521.54 2.592.538h.002c.667 0 1.32-.18 1.894-.519A3.84 3.84 0 0 0 16 6.819c.018-1.316-.44-2.218-.666-2.664l-.04-.08C13.963 1.487 11.106 0 8 0A8 8 0 0 0 .473 5.29C1.488 4.048 3.183 3.262 5 3.262c2.83 0 5.01 1.885 5.01 4.797h-.004v.002c0 .338-.168.832-.487 1.244l.006-.006z"/><path fill="currentColor" d="M.01 7.753a8.14 8.14 0 0 0 .753 3.641 8 8 0 0 0 6.495 4.564 5 5 0 0 1-.785-.377h-.01l-.12-.075a5.5 5.5 0 0 1-1.56-1.463A5.543 5.543 0 0 1 6.81 5.8l.01-.004.025-.012c.208-.098.62-.292 1.167-.285q.194.001.384.033a4 4 0 0 0-.993-.698l-.01-.005C6.348 4.282 5.199 4.263 5 4.263c-2.44 0-4.824 1.634-4.99 3.49m10.263 7.912q.133-.04.265-.084-.153.047-.307.086z"/><path fill="currentColor" d="M10.228 15.667a5 5 0 0 0 .303-.086l.082-.025a8.02 8.02 0 0 0 4.162-3.3.25.25 0 0 0-.331-.35q-.322.168-.663.294a6.4 6.4 0 0 1-2.243.4c-2.957 0-5.532-2.031-5.532-4.644q.003-.203.046-.399a4.54 4.54 0 0 0-.46 5.898l.003.005c.315.441.707.821 1.158 1.121h.003l.144.09c.877.55 1.721 1.078 3.328.996"/></symbol>
+  <symbol id="mark-brave" viewBox="0 0 24 24"><path fill="currentColor" d="M15.68 0l2.096 2.38s1.84-.512 2.709.358c.868.87 1.584 1.638 1.584 1.638l-.562 1.381.715 2.047s-2.104 7.98-2.35 8.955c-.486 1.919-.818 2.66-2.198 3.633-1.38.972-3.884 2.66-4.293 2.916-.409.256-.92.692-1.38.692-.46 0-.97-.436-1.38-.692a185.796 185.796 0 01-4.293-2.916c-1.38-.973-1.712-1.714-2.197-3.633-.247-.975-2.351-8.955-2.351-8.955l.715-2.047-.562-1.381s.716-.768 1.585-1.638c.868-.87 2.708-.358 2.708-.358L8.321 0h7.36zm-3.679 14.936c-.14 0-1.038.317-1.758.69-.72.373-1.242.637-1.409.742-.167.104-.065.301.087.409.152.107 2.194 1.69 2.393 1.866.198.175.489.464.687.464.198 0 .49-.29.688-.464.198-.175 2.24-1.759 2.392-1.866.152-.108.254-.305.087-.41-.167-.104-.689-.368-1.41-.741-.72-.373-1.617-.69-1.757-.69zm0-11.278s-.409.001-1.022.206-1.278.46-1.584.46c-.307 0-2.581-.434-2.581-.434S4.119 7.152 4.119 7.849c0 .697.339.881.68 1.243l2.02 2.149c.192.203.59.511.356 1.066-.235.555-.58 1.26-.196 1.977.384.716 1.042 1.194 1.464 1.115.421-.08 1.412-.598 1.776-.834.364-.237 1.518-1.19 1.518-1.554 0-.365-1.193-1.02-1.413-1.168-.22-.15-1.226-.725-1.247-.95-.02-.227-.012-.293.284-.851.297-.559.831-1.304.742-1.8-.089-.495-.95-.753-1.565-.986-.615-.232-1.799-.671-1.947-.74-.148-.068-.11-.133.339-.175.448-.043 1.719-.212 2.292-.052.573.16 1.552.403 1.632.532.079.13.149.134.067.579-.081.445-.5 2.581-.541 2.96-.04.38-.12.63.288.724.409.094 1.097.256 1.333.256s.924-.162 1.333-.256c.408-.093.329-.344.288-.723-.04-.38-.46-2.516-.541-2.961-.082-.445-.012-.45.067-.579.08-.129 1.059-.372 1.632-.532.573-.16 1.845.009 2.292.052.449.042.487.107.339.175-.148.069-1.332.508-1.947.74-.615.233-1.476.49-1.565.986-.09.496.445 1.241.742 1.8.297.558.304.624.284.85-.02.226-1.026.802-1.247.95-.22.15-1.413.804-1.413 1.169 0 .364 1.154 1.317 1.518 1.554.364.236 1.355.755 1.776.834.422.079 1.08-.4 1.464-1.115.384-.716.039-1.422-.195-1.977-.235-.555.163-.863.355-1.066l2.02-2.149c.341-.362.68-.546.68-1.243 0-.697-2.695-3.96-2.695-3.96s-2.274.436-2.58.436c-.307 0-.972-.256-1.585-.461-.613-.205-1.022-.206-1.022-.206z"/></symbol>
+  <symbol id="mark-ext" viewBox="0 0 24 24"><path fill="currentColor" d="M10 2.5a2.5 2.5 0 0 1 5 0V4h3.5A1.5 1.5 0 0 1 20 5.5V9h-1.5a2.5 2.5 0 0 0 0 5H20v4.5a1.5 1.5 0 0 1-1.5 1.5H15v-1.5a2.5 2.5 0 0 0-5 0V20H5.5A1.5 1.5 0 0 1 4 18.5V15h1.5a2.5 2.5 0 0 0 0-5H4V5.5A1.5 1.5 0 0 1 5.5 4H10z"/></symbol>
+  <symbol id="mark-opera" viewBox="0 0 24 24"><path fill="currentColor" d="M8.051 5.238c-1.328 1.566-2.186 3.883-2.246 6.48v.564c.061 2.598.918 4.912 2.246 6.479 1.721 2.236 4.279 3.654 7.139 3.654 1.756 0 3.4-.537 4.807-1.471C17.879 22.846 15.074 24 12 24c-.192 0-.383-.004-.57-.014C5.064 23.689 0 18.436 0 12 0 5.371 5.373 0 12 0h.045c3.055.012 5.84 1.166 7.953 3.055-1.408-.93-3.051-1.471-4.81-1.471-2.858 0-5.417 1.42-7.14 3.654h.003zM24 12c0 3.556-1.545 6.748-4.002 8.945-3.078 1.5-5.946.451-6.896-.205 3.023-.664 5.307-4.32 5.307-8.74 0-4.422-2.283-8.075-5.307-8.74.949-.654 3.818-1.703 6.896-.205C22.455 5.25 24 8.445 24 12z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="brand" href="#cover" aria-label="YouTube Music Skip Solution, back to top">
+      <img src="assets/img/icon-128.png?v=202611062135" width="128" height="128" alt="" class="brand__logo">
+      <span class="brand__name" aria-hidden="true"><span class="brand__yt">YouTube Music </span>Skip Solution</span>
+    </a>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="#chapter-1">Story</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--nav btn--auto" href="#download" data-store="auto" data-section="nav"><svg class="btn__mark" aria-hidden="true"><use href="#mark-ext"/></svg><span class="btn__label">Get the extension</span><span class="btn__short">Get it</span></a>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="sr-only">Menu</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ COVER ============ -->
+<section class="cover" id="cover" aria-labelledby="cover-title" data-page data-title="Cover" tabindex="-1">
+<div class="page page--cover">
+  <div class="cover__frame" data-tilt>
+    <div class="cover__art" data-tilt-layer="-1">
+      <picture data-img="panel-01" data-sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062135 828w, assets/img/panel-01-1280.webp?v=202611062135 1280w, assets/img/panel-01-1920.webp?v=202611062135 1920w, assets/img/panel-01-2560.webp?v=202611062135 2560w, assets/img/panel-01-3840.webp?v=202611062135 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><img fetchpriority="high" decoding="async"
+             alt="Comic cover art: a listener in headphones at a calm desk, a big play button glowing on the monitor." src="assets/img/panel-01-828.jpg?v=202611062135" srcset="assets/img/panel-01-828.jpg?v=202611062135 828w, assets/img/panel-01-1280.jpg?v=202611062135 1280w, assets/img/panel-01-1920.jpg?v=202611062135 1920w, assets/img/panel-01-2560.jpg?v=202611062135 2560w, assets/img/panel-01-3840.jpg?v=202611062135 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw" width="3840" height="1926"></picture>
+    </div>
+    <div class="cover__wave" aria-hidden="true">
+      <svg class="wave-scroll" viewBox="0 0 800 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 25 4 50 30 T 100 30 T 150 30 T 200 30 T 250 30 T 300 30 T 350 30 T 400 30 T 450 30 T 500 30 T 550 30 T 600 30 T 650 30 T 700 30 T 750 30 T 800 30"/>
+        <path class="wave-2" d="M0 30 Q 50 54 100 30 T 200 30 T 300 30 T 400 30 T 500 30 T 600 30 T 700 30 T 800 30"/>
+      </svg>
+    </div>
+
+    <div class="cover__top">
+      <p class="issue" aria-label="Issue number 1"><span>Issue</span><b>#1</b></p>
+      <p class="cover__kicker">
+        <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        For YouTube &amp; YouTube Music
+      </p>
+    </div>
+
+    <div class="cover__body" data-tilt-layer="1">
+      <h1 class="display cover__title" id="cover-title">
+        <span class="hl-white">YouTube Music</span>
+        <span class="hl-red">Skip Solution</span>
+      </h1>
+      <p class="cover__tagline">Your music. Uninterrupted.</p>
+      <p class="cover__sub">Keeps YouTube and YouTube Music playing in background tabs: no freezes, no throttling, no random skips.</p>
+      <div class="store-row cta-row">
+        <a class="btn btn--store is-primary btn--auto" href="#download" data-store="auto" data-section="hero">
+          <svg class="btn__mark" aria-hidden="true"><use href="#mark-ext"/></svg>
+          <span class="btn__txt"><span class="btn__label">Get the extension</span><span class="btn__sub">Chrome, Firefox, Edge, Brave, Opera</span></span>
+        </a>
+        <a class="cta-alt" href="#download">All browsers <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+      </div>
+    <p class="also"><span class="also__lead">Also works on</span><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=edge-hero" data-store="chrome" data-section="hero" data-also="edge" data-umami-event="store-click" data-umami-event-store="edge" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-edge"/></svg>Edge</a><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=brave-hero" data-store="chrome" data-section="hero" data-also="brave" data-umami-event="store-click" data-umami-event-store="brave" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-brave"/></svg>Brave</a><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=opera-hero" data-store="chrome" data-section="hero" data-also="opera" aria-describedby="opera-note-hero" data-umami-event="store-click" data-umami-event-store="opera" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-opera"/></svg>Opera<sup>*</sup></a></p>
+      <p class="also__note" id="opera-note-hero"><sup>*</sup>Opera: add the official <a href="https://addons.opera.com/en/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> add-on first. All three use the Chrome Web Store.</p>
+      <p class="chip"><span class="chip__dot" aria-hidden="true"></span><span><span data-cfg="trial-days">7</span>-day free trial</span></p>
+    </div>
+  </div>
+  <div class="page__foot">
+    <a class="next-tab" href="#chapter-1" data-next><span class="next-tab__kicker">Issue #1, chapter 1</span><span class="next-tab__label">Read the story</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ STORY ============ -->
+<!-- Each chapter is one centred comic page (fits one viewport). With JS it builds itself
+     beat by beat (data-beat order; timing in CHAPTER_PACING in js/main.js) after one click on
+     the previous chapter's "Next chapter" tab, or when scrolled into view. Reduced motion and
+     no JS: every beat is shown at once and the tabs are plain anchor links. -->
+<div id="story" class="story">
+
+  <!-- Chapter 1 -->
+  <section class="chapter ch1" id="chapter-1" aria-labelledby="ch1-title" data-chapter data-page data-title="Ch. 1: Starting the day" tabindex="-1">
+    <div class="page">
+      <header class="page__head" data-reveal="slide" data-beat="0">
+        <p class="chapter__no">Chapter 1</p>
+        <h2 class="display chapter__title" id="ch1-title"><span class="hl-white">Starting</span> <span class="hl-red">the day</span></h2>
+      </header>
+      <div class="page__stage">
+        <div class="page__grid ch1__grid">
+          <figure class="panel p-wide" data-reveal="ink" data-beat="1">
+            <div class="panel__art" data-hover>
+              <picture data-img="panel-01" data-sizes="(min-width: 700px) 74vw, 100vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062135 828w, assets/img/panel-01-1280.webp?v=202611062135 1280w, assets/img/panel-01-1920.webp?v=202611062135 1920w, assets/img/panel-01-2560.webp?v=202611062135 2560w, assets/img/panel-01-3840.webp?v=202611062135 3840w" sizes="(min-width: 700px) 74vw, 100vw"><img alt="Wide shot: morning at the desk. A steaming mug, a plant, a desk lamp, and a red waveform rolling across the monitor while the listener settles in with headphones on." loading="lazy" decoding="async" src="assets/img/panel-01-828.jpg?v=202611062135" srcset="assets/img/panel-01-828.jpg?v=202611062135 828w, assets/img/panel-01-1280.jpg?v=202611062135 1280w, assets/img/panel-01-1920.jpg?v=202611062135 1920w, assets/img/panel-01-2560.jpg?v=202611062135 2560w, assets/img/panel-01-3840.jpg?v=202611062135 3840w" sizes="(min-width: 700px) 74vw, 100vw" width="3840" height="1926"></picture>
+            </div>
+            <figcaption class="caption caption--tl" data-reveal="caption" data-beat="2">7:57 AM. Coffee&rsquo;s hot. Playlist&rsquo;s on.</figcaption>
+          </figure>
+          <figure class="panel p-head" data-reveal="ink" data-beat="3">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-01-head" data-sizes="(min-width: 700px) 26vw, 50vw"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062135 480w, assets/img/cu-01-head-800.webp?v=202611062135 800w, assets/img/cu-01-head.webp?v=202611062135 832w" sizes="(min-width: 700px) 26vw, 50vw"><img alt="Close-up: the back of the listener's head, big headphones on, hands on the keyboard." loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062135" srcset="assets/img/cu-01-head-480.jpg?v=202611062135 480w, assets/img/cu-01-head-800.jpg?v=202611062135 800w, assets/img/cu-01-head.jpg?v=202611062135 832w" sizes="(min-width: 700px) 26vw, 50vw" width="832" height="800"></picture>
+            </div>
+            <p class="bubble bubble--head" data-reveal="pop" data-beat="4">Perfect.</p>
+          </figure>
+          <figure class="panel p-mug" data-reveal="ink" data-beat="4">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-01-mug" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-mug-480.webp?v=202611062135 480w, assets/img/cu-01-mug.webp?v=202611062135 512w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the coffee mug, still steaming." loading="lazy" decoding="async" src="assets/img/cu-01-mug.jpg?v=202611062135" srcset="assets/img/cu-01-mug-480.jpg?v=202611062135 480w, assets/img/cu-01-mug.jpg?v=202611062135 512w" sizes="(min-width: 700px) 13vw, 25vw" width="512" height="976"></picture>
+            </div>
+            <span class="sfx sfx--slurp" aria-hidden="true" data-reveal="sfx" data-beat="5">Slurp!</span>
+          </figure>
+          <figure class="panel p-lamp" data-reveal="ink" data-beat="5">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-01-lamp" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-lamp-480.webp?v=202611062135 480w, assets/img/cu-01-lamp.webp?v=202611062135 656w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the desk lamp throws a warm red pool of light." loading="lazy" decoding="async" src="assets/img/cu-01-lamp.jpg?v=202611062135" srcset="assets/img/cu-01-lamp-480.jpg?v=202611062135 480w, assets/img/cu-01-lamp.jpg?v=202611062135 656w" sizes="(min-width: 700px) 13vw, 25vw" width="656" height="960"></picture>
+            </div>
+          </figure>
+          <figure class="panel p-strip" data-reveal="ink" data-beat="6">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-01-wave" data-sizes="100vw"><source type="image/webp" srcset="assets/img/cu-01-wave-480.webp?v=202611062135 480w, assets/img/cu-01-wave-800.webp?v=202611062135 800w, assets/img/cu-01-wave.webp?v=202611062135 900w, assets/img/cu-01-wave-1200.webp?v=202611062135 1200w, assets/img/cu-01-wave-1600.webp?v=202611062135 1600w" sizes="100vw"><img alt="Strip panel: the play button on screen, a red waveform either side of it." loading="lazy" decoding="async" src="assets/img/cu-01-wave-800.jpg?v=202611062135" srcset="assets/img/cu-01-wave-480.jpg?v=202611062135 480w, assets/img/cu-01-wave-800.jpg?v=202611062135 800w, assets/img/cu-01-wave.jpg?v=202611062135 900w, assets/img/cu-01-wave-1200.jpg?v=202611062135 1200w, assets/img/cu-01-wave-1600.jpg?v=202611062135 1600w" sizes="100vw" width="1600" height="307"></picture>
+            </div>
+            <figcaption class="caption caption--br caption--red" data-reveal="caption" data-beat="7">Now playing. On repeat.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="page__foot">
+        <a class="prev-tab" href="#cover" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+        <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+        <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+        <a class="next-tab" href="#chapter-2" data-next><span class="next-tab__kicker">Then the real work begins&hellip;</span><span class="next-tab__label">Next chapter: Deep work mode</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2 -->
+  <section class="chapter ch2" id="chapter-2" aria-labelledby="ch2-title" data-chapter data-page data-title="Ch. 2: Deep work mode" tabindex="-1">
+    <div class="page">
+      <header class="page__head" data-reveal="slide" data-beat="0">
+        <p class="chapter__no">Chapter 2</p>
+        <h2 class="display chapter__title" id="ch2-title"><span class="hl-white">Deep work</span> <span class="hl-red">mode</span></h2>
+      </header>
+      <div class="page__stage">
+        <div class="page__grid ch2__grid">
+          <figure class="panel p-main" data-reveal="ink" data-beat="1">
+            <div class="panel__art" data-hover>
+              <picture data-img="panel-02" data-sizes="(min-width: 700px) 77vw, 100vw"><source type="image/webp" srcset="assets/img/panel-02-828.webp?v=202611062135 828w, assets/img/panel-02-1280.webp?v=202611062135 1280w, assets/img/panel-02-1920.webp?v=202611062135 1920w, assets/img/panel-02-2560.webp?v=202611062135 2560w, assets/img/panel-02-3840.webp?v=202611062135 3840w" sizes="(min-width: 700px) 77vw, 100vw"><img alt="Deep focus: code and a project dashboard fill the monitor, the music still playing, a bead of sweat on the listener's brow." loading="lazy" decoding="async" src="assets/img/panel-02-828.jpg?v=202611062135" srcset="assets/img/panel-02-828.jpg?v=202611062135 828w, assets/img/panel-02-1280.jpg?v=202611062135 1280w, assets/img/panel-02-1920.jpg?v=202611062135 1920w, assets/img/panel-02-2560.jpg?v=202611062135 2560w, assets/img/panel-02-3840.jpg?v=202611062135 3840w" sizes="(min-width: 700px) 77vw, 100vw" width="3840" height="1935"></picture>
+            </div>
+            <figcaption class="caption caption--tl" data-reveal="caption" data-beat="2">You switch tabs. The music keeps you going&hellip;</figcaption>
+          </figure>
+          <figure class="panel p-code" data-reveal="ink" data-beat="3">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-02-code" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-code-480.webp?v=202611062135 480w, assets/img/cu-02-code-800.webp?v=202611062135 800w, assets/img/cu-02-code.webp?v=202611062135 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: lines of code glowing on the screen, the music tab still open." loading="lazy" decoding="async" src="assets/img/cu-02-code-800.jpg?v=202611062135" srcset="assets/img/cu-02-code-480.jpg?v=202611062135 480w, assets/img/cu-02-code-800.jpg?v=202611062135 800w, assets/img/cu-02-code.jpg?v=202611062135 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="729"></picture>
+              <div class="tabs" aria-hidden="true">
+                <span class="tabs__tab tabs__tab--music">&#9835; Focus playlist</span>
+                <span class="tabs__tab tabs__tab--code is-active">main.js</span>
+              </div>
+            </div>
+          </figure>
+          <figure class="panel p-head2" data-reveal="ink" data-beat="4">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-02-head" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-head-480.webp?v=202611062135 480w, assets/img/cu-02-head-800.webp?v=202611062135 800w, assets/img/cu-02-head.webp?v=202611062135 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: the listener leans in, sweat marks flying, totally in the zone." loading="lazy" decoding="async" src="assets/img/cu-02-head-800.jpg?v=202611062135" srcset="assets/img/cu-02-head-480.jpg?v=202611062135 480w, assets/img/cu-02-head-800.jpg?v=202611062135 800w, assets/img/cu-02-head.jpg?v=202611062135 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="743"></picture>
+            </div>
+            <span class="sfx sfx--tap" aria-hidden="true" data-reveal="sfx" data-beat="5">Tak tak tak</span>
+          </figure>
+          <p class="turn turn--ominous" data-reveal="slide" data-beat="6">&hellip;for now.</p>
+        </div>
+      </div>
+      <div class="page__foot">
+        <a class="prev-tab" href="#chapter-1" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous chapter</span></span></a>
+        <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+        <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+        <a class="next-tab" href="#chapter-3" data-next><span class="next-tab__kicker">To be continued&hellip;</span><span class="next-tab__label">Next chapter: Suddenly&hellip; chaos</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3 -->
+  <section class="chapter ch3" id="chapter-3" aria-labelledby="ch3-title" data-chapter data-page data-title="Ch. 3: Suddenly… chaos" tabindex="-1">
+    <div class="page">
+      <header class="page__head" data-reveal="slide" data-beat="0">
+        <p class="chapter__no">Chapter 3</p>
+        <h2 class="display chapter__title" id="ch3-title"><span class="hl-white">Suddenly&hellip;</span> <span class="hl-red">chaos</span></h2>
+      </header>
+      <div class="page__stage">
+        <div class="page__grid chaos">
+          <figure class="panel c-main" data-reveal="ink" data-beat="1">
+            <div class="panel__art" data-hover>
+              <picture data-img="panel-03" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-03-828.webp?v=202611062135 828w, assets/img/panel-03-1280.webp?v=202611062135 1280w, assets/img/panel-03-1920.webp?v=202611062135 1920w, assets/img/panel-03-2560.webp?v=202611062135 2560w, assets/img/panel-03-3840.webp?v=202611062135 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Chaos: skip windows explode out of the monitor, ERROR warnings flash, and the listener grabs their head in both hands." loading="lazy" decoding="async" src="assets/img/panel-03-828.jpg?v=202611062135" srcset="assets/img/panel-03-828.jpg?v=202611062135 828w, assets/img/panel-03-1280.jpg?v=202611062135 1280w, assets/img/panel-03-1920.jpg?v=202611062135 1920w, assets/img/panel-03-2560.jpg?v=202611062135 2560w, assets/img/panel-03-3840.jpg?v=202611062135 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
+            </div>
+            <figcaption class="caption caption--tl caption--alarm" data-reveal="caption" data-beat="8">Your playlist skips itself. Focus gone.</figcaption>
+            <span class="sfx sfx--next1" aria-hidden="true" data-reveal="sfx" data-beat="4">Next!</span>
+            <span class="sfx sfx--next2" aria-hidden="true" data-reveal="sfx" data-beat="4" style="--d: .22s">Next!</span>
+            <span class="sfx sfx--next3" aria-hidden="true" data-reveal="sfx" data-beat="4" style="--d: .44s">Next!</span>
+            <span class="sfx sfx--next4" aria-hidden="true" data-reveal="sfx" data-beat="4" style="--d: .6s">Next!</span>
+            <div class="c-skips" aria-hidden="true">
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062135"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062135" width="464" height="352"></picture>
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .12s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062135"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062135" width="464" height="352"></picture>
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .24s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062135"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062135" width="464" height="352"></picture>
+            </div>
+            <div class="yt-dialog" role="img" aria-label="Then a pop-up on top: Video paused. Continue watching?" data-reveal="pop" data-beat="7">
+              <p class="yt-dialog__text">Video paused. Continue watching?</p>
+              <span class="yt-dialog__btn">Yes</span>
+            </div>
+            <span class="sfx sfx--skip" aria-hidden="true" data-reveal="sfx" data-beat="7" style="--d: .3s">SKIP!</span>
+          </figure>
+          <figure class="panel c-queue" data-reveal="ink" data-beat="3">
+            <div class="panel__art queue is-burned" data-queue role="img"
+                 aria-label="A YouTube Music style queue in a background tab: the highlight jumps from track to track as each one is skipped, until the whole playlist is gone.">
+              <div class="queue__head" aria-hidden="true">
+                <span class="queue__logo"></span><b>Up next</b><span class="queue__tag">Background tab</span>
+              </div>
+              <ol class="queue__list" aria-hidden="true">
+                <li class="is-skipped"><span class="queue__no">1</span><span class="queue__title">Deep Focus Mix</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">2</span><span class="queue__title">Lo-fi Morning</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">3</span><span class="queue__title">Night Drive</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">4</span><span class="queue__title">Rain Study</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">5</span><span class="queue__title">Synth Flow</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">6</span><span class="queue__title">Coffee Beats</span><span class="queue__skip">Skip</span></li>
+                <li class="is-skipped"><span class="queue__no">7</span><span class="queue__title">Ambient Code</span><span class="queue__skip">Skip</span></li>
+              </ol>
+              <p class="queue__now" aria-hidden="true"><span class="queue__eq"></span><span data-queue-now>Playlist ended. Every track skipped.</span></p>
+            </div>
+          </figure>
+          <figure class="panel c-screen" data-reveal="slam" data-beat="5">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-03-screen" data-sizes="(min-width: 700px) 36vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-screen-480.webp?v=202611062135 480w, assets/img/cu-03-screen-800.webp?v=202611062135 800w, assets/img/cu-03-screen.webp?v=202611062135 900w, assets/img/cu-03-screen-1200.webp?v=202611062135 1200w, assets/img/cu-03-screen-1600.webp?v=202611062135 1600w" sizes="(min-width: 700px) 36vw, 42vw"><img alt="Close-up of the screen: stacks of SKIP pop-ups, warning triangles and an ERROR label." loading="lazy" decoding="async" src="assets/img/cu-03-screen-800.jpg?v=202611062135" srcset="assets/img/cu-03-screen-480.jpg?v=202611062135 480w, assets/img/cu-03-screen-800.jpg?v=202611062135 800w, assets/img/cu-03-screen.jpg?v=202611062135 900w, assets/img/cu-03-screen-1200.jpg?v=202611062135 1200w, assets/img/cu-03-screen-1600.jpg?v=202611062135 1600w" sizes="(min-width: 700px) 36vw, 42vw" width="1600" height="738"></picture>
+            </div>
+            <span class="sfx sfx--bzzt" aria-hidden="true" data-reveal="sfx" data-beat="5" style="--d: .45s">BZZT!</span>
+          </figure>
+          <figure class="panel c-head" data-reveal="slam" data-beat="6">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-03-head" data-sizes="(min-width: 700px) 21vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062135 480w, assets/img/cu-03-head-800.webp?v=202611062135 800w, assets/img/cu-03-head.webp?v=202611062135 900w" sizes="(min-width: 700px) 21vw, 42vw"><img alt="Close-up: hands clamped to the headphones, sweat flying." loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062135" srcset="assets/img/cu-03-head-480.jpg?v=202611062135 480w, assets/img/cu-03-head-800.jpg?v=202611062135 800w, assets/img/cu-03-head.jpg?v=202611062135 900w" sizes="(min-width: 700px) 21vw, 42vw" width="900" height="728"></picture>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div class="page__foot">
+        <a class="prev-tab" href="#chapter-2" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous chapter</span></span></a>
+        <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+        <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+        <a class="next-tab" href="#chapter-4" data-next><span class="next-tab__kicker">There has to be a better way&hellip;</span><span class="next-tab__label">Next chapter: Skip no more!</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 4 -->
+  <section class="chapter ch4" id="chapter-4" aria-labelledby="ch4-title" data-chapter data-page data-title="Ch. 4: Skip no more!" tabindex="-1">
+    <div class="page">
+      <header class="page__head" data-reveal="slide" data-beat="0">
+        <p class="chapter__no chapter__no--calm">Chapter 4</p>
+        <h2 class="display chapter__title" id="ch4-title"><span class="hl-white">Skip</span> <span class="hl-red">no more!</span></h2>
+      </header>
+      <div class="page__stage">
+        <div class="page__grid ch4__grid">
+          <figure class="panel k-store" data-reveal="ink" data-beat="1">
+            <div class="panel__art art-ui" data-hover>
+              <div class="ui-store" aria-hidden="true">
+                <div class="ui-bar"><i></i><i></i><i></i><span>chromewebstore.google.com</span></div>
+                <div class="ui-store__body">
+                  <img src="assets/img/icon-128.png?v=202611062135" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async">
+                  <div><p class="ui-store__name"><span class="ui-wide">YouTube Music </span>Skip Solution</p><p class="ui-store__meta">Extension &middot; BigBlueCanvas</p></div>
+                </div>
+                <span class="ui-btn ui-press"><span class="ui-btn__a">Add to Chrome</span><span class="ui-btn__b">Added &#10003;</span><svg class="ui-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l6.5 19 2.6-7.6L21 11z"/></svg></span>
+              </div>
+            </div>
+            <figcaption class="step-badge"><b>1</b> Install</figcaption>
+            <span class="sfx sfx--k1" aria-hidden="true" data-reveal="sfx" data-beat="2">Click!</span>
+          </figure>
+          <figure class="panel k-pop" data-reveal="ink" data-beat="3">
+            <div class="panel__art art-ui" data-hover>
+              <div class="ui-pop" aria-hidden="true">
+                <div class="ui-pop__head"><img src="assets/img/icon-128.png?v=202611062135" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async"><b>Skip Solution</b></div>
+                <p class="ui-pop__txt">Keep YouTube Music playing in background tabs.</p>
+                <span class="ui-btn ui-press"><span class="ui-btn__a">Start <span data-cfg="trial-days">7</span>-day<span class="ui-wide"> free</span> trial</span><span class="ui-btn__b">Trial started &#10003;</span><svg class="ui-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l6.5 19 2.6-7.6L21 11z"/></svg></span>
+                <p class="ui-pop__small">Then unlock forever: <span data-cfg="price">$1.99</span></p>
+              </div>
+            </div>
+            <figcaption class="step-badge"><b>2</b> Start the trial</figcaption>
+            <span class="sfx sfx--k2" aria-hidden="true" data-reveal="sfx" data-beat="4">Click!</span>
+          </figure>
+          <figure class="panel p-on" data-reveal="ink" data-beat="5">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-04-on" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062135 480w, assets/img/cu-04-on-800.webp?v=202611062135 800w, assets/img/cu-04-on.webp?v=202611062135 900w" sizes="(min-width: 700px) 24vw, 50vw"><img alt="Close-up: the extension's music icon with its green ON badge, a steady red waveform behind it." loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062135" srcset="assets/img/cu-04-on-480.jpg?v=202611062135 480w, assets/img/cu-04-on-800.jpg?v=202611062135 800w, assets/img/cu-04-on.jpg?v=202611062135 900w" sizes="(min-width: 700px) 24vw, 50vw" width="900" height="714"></picture>
+            </div>
+            <div class="toggle" aria-hidden="true">
+              <span class="toggle__label">Skip Solution</span>
+              <span class="toggle__track"><span class="toggle__on-bg"></span><span class="toggle__knob"></span></span>
+              <span class="toggle__state"><span class="toggle__off">OFF</span><span class="toggle__onw">ON</span></span>
+            </div>
+            <figcaption class="step-badge"><b>3</b> Switched on</figcaption>
+            <span class="sfx sfx--on" aria-hidden="true" data-reveal="sfx" data-beat="5" style="--d: .55s">ON.</span>
+          </figure>
+          <figure class="panel p-mug4" data-reveal="ink" data-beat="6">
+            <div class="panel__art" data-hover>
+              <picture data-img="cu-04-mug" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-mug.webp?v=202611062135"><img alt="Insert: the coffee is still warm. Time to get back to work." loading="lazy" decoding="async" src="assets/img/cu-04-mug.jpg?v=202611062135" width="400" height="672"></picture>
+            </div>
+            <figcaption class="step-badge"><b>4</b> Back to work</figcaption>
+            <p class="caption caption--ahh" data-reveal="caption" data-beat="6" style="--d: .1s">Ahh.</p>
+          </figure>
+          <figure class="panel splash" data-reveal="ink" data-beat="7">
+            <div class="panel__art" data-hover>
+              <picture data-img="panel-04" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-04-828.webp?v=202611062135 828w, assets/img/panel-04-1280.webp?v=202611062135 1280w, assets/img/panel-04-1920.webp?v=202611062135 1920w, assets/img/panel-04-2560.webp?v=202611062135 2560w, assets/img/panel-04-3840.webp?v=202611062135 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Calm again: the extension's icon glows with a green ON badge, the waveform flows steadily, green light fills the room, and the words SKIP NO MORE! stretch across the panel." loading="lazy" decoding="async" src="assets/img/panel-04-828.jpg?v=202611062135" srcset="assets/img/panel-04-828.jpg?v=202611062135 828w, assets/img/panel-04-1280.jpg?v=202611062135 1280w, assets/img/panel-04-1920.jpg?v=202611062135 1920w, assets/img/panel-04-2560.jpg?v=202611062135 2560w, assets/img/panel-04-3840.jpg?v=202611062135 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
+            </div>
+            <figcaption class="caption caption--tl" data-reveal="caption" data-beat="8">One click. Music that never stops.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="page__foot">
+        <a class="prev-tab" href="#chapter-3" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous chapter</span></span></a>
+        <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+        <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+        <a class="next-tab" href="#why" data-next><span class="next-tab__kicker">Behind the issue</span><span class="next-tab__label">Next: Why I built it</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+<!-- ============ PAGE: WHY I BUILT IT ============ -->
+<section class="section pg origin" id="why" aria-labelledby="origin-title" data-page data-title="Why I built it" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">Behind the issue</p>
+    <h2 class="display section__title" id="origin-title"><span class="hl-white">Why I</span> <span class="hl-red">built it.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <ol class="origin__seq swipe">
+    <li class="origin__beat" data-beat="1" data-reveal="ink">
+      <picture class="origin__thumb" data-img="cu-01-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062135 480w, assets/img/cu-01-head-800.webp?v=202611062135 800w, assets/img/cu-01-head.webp?v=202611062135 832w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062135" srcset="assets/img/cu-01-head-480.jpg?v=202611062135 480w, assets/img/cu-01-head-800.jpg?v=202611062135 800w, assets/img/cu-01-head.jpg?v=202611062135 832w" sizes="(min-width: 900px) 22vw, 108px" width="832" height="800"></picture>
+      <p class="caption origin__cap">I usually need music when I&rsquo;m doing important work, and also when I need my mind to relax through tedious tasks.</p>
+    </li>
+    <li class="origin__beat" data-beat="2" data-reveal="ink">
+      <picture class="origin__thumb" data-img="cu-03-skip" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062135"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062135" width="464" height="352"></picture>
+      <p class="caption origin__cap">But when YouTube Music started skipping non-stop, there was nothing I could do.</p>
+    </li>
+    <li class="origin__beat" data-beat="3" data-reveal="ink">
+      <picture class="origin__thumb" data-img="cu-03-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062135 480w, assets/img/cu-03-head-800.webp?v=202611062135 800w, assets/img/cu-03-head.webp?v=202611062135 900w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062135" srcset="assets/img/cu-03-head-480.jpg?v=202611062135 480w, assets/img/cu-03-head-800.jpg?v=202611062135 800w, assets/img/cu-03-head.jpg?v=202611062135 900w" sizes="(min-width: 900px) 22vw, 108px" width="900" height="728"></picture>
+      <p class="caption caption--alarm origin__cap">I got so upset, my mood and creative flow broke instantly. I tried all sorts of browser gymnastics to stop it, but most of the time it simply didn&rsquo;t work.</p>
+    </li>
+    <li class="origin__beat" data-beat="4" data-reveal="ink">
+      <picture class="origin__thumb" data-img="cu-04-on" data-sizes="(min-width: 700px) 42vw, 80vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062135 480w, assets/img/cu-04-on-800.webp?v=202611062135 800w, assets/img/cu-04-on.webp?v=202611062135 900w" sizes="(min-width: 700px) 42vw, 80vw"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062135" srcset="assets/img/cu-04-on-480.jpg?v=202611062135 480w, assets/img/cu-04-on-800.jpg?v=202611062135 800w, assets/img/cu-04-on.jpg?v=202611062135 900w" sizes="(min-width: 700px) 42vw, 80vw" width="900" height="714"></picture>
+      <p class="caption origin__cap">I got tired of the constant annoyance and built a permanent solution. I wanted to never stop the music again, keep the audio live, and <strong>skip no more!</strong></p>
+    </li>
+  </ol>
+  <p class="origin__sig" data-beat="5" data-reveal="slide">&mdash; BigBlueCanvas, maker of YouTube Music Skip Solution</p>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#chapter-4" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#how" data-next><span class="next-tab__label">Next: How it works</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: HOW IT WORKS ============ -->
+<section class="section pg how" id="how" aria-labelledby="how-title" data-page data-title="How it works" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">How it works</p>
+    <h2 class="display section__title" id="how-title"><span class="hl-white">Three fixes.</span> <span class="hl-red">Zero effort.</span></h2>
+    <a class="back-story" href="#chapter-1">&larr; Back to the story</a>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <ol class="beats swipe">
+    <li class="beat" data-beat="1" data-reveal="ink">
+      <span class="beat__no" aria-hidden="true">1</span>
+      <svg class="beat__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24z"/><circle cx="24" cy="24" r="6"/><path d="M24 4v4M38 8l-3 3M10 8l3 3"/></svg>
+      <h3 class="beat__title">Stays awake in background tabs</h3>
+      <p>Blocks the browser&rsquo;s background-tab throttling and freezes, so playback keeps going while you work in another tab.</p>
+    </li>
+    <li class="beat" data-beat="2" data-reveal="ink">
+      <span class="beat__no" aria-hidden="true">2</span>
+      <svg class="beat__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h36v22H20l-9 8v-8H6z"/><path d="M16 21l5 5 11-10"/></svg>
+      <h3 class="beat__title">Answers &ldquo;Are you still there?&rdquo; for you</h3>
+      <p>The &ldquo;Video paused. Continue watching?&rdquo; prompt gets answered automatically. You never have to click it.</p>
+    </li>
+    <li class="beat" data-beat="3" data-reveal="ink">
+      <span class="beat__no" aria-hidden="true">3</span>
+      <svg class="beat__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 12l14 12-14 12zM24 12l14 12-14 12z"/><path d="M6 42L42 6" class="beat__strike"/></svg>
+      <h3 class="beat__title">Stops random skips and tab unloading</h3>
+      <p>Puts an end to the automatic track-skipping and tab-unloading bugs that cut your playlist short.</p>
+    </li>
+  </ol>
+
+  <ol class="steps" data-beat="4" data-reveal="slide" aria-label="Getting started">
+    <li class="step"><span class="step__no">1</span> Install</li>
+    <li class="step"><span class="step__no">2</span> <span>Start the <span data-cfg="trial-days">7</span>-day trial</span></li>
+    <li class="step"><span class="step__no">3</span> Forget about it</li>
+  </ol>
+
+  <div class="about" data-beat="5" data-reveal="slide">
+    <p><strong>YouTube Music Skip Solution</strong> is a small browser extension for Chrome, Firefox, Edge, Brave and Opera that keeps YouTube and YouTube Music playing in background tabs. It&rsquo;s made for people who work, study, code or design with music on, and just want the playlist to keep going while they focus on something else.</p>
+  </div>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#why" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#difference" data-next><span class="next-tab__label">Next: See the difference</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: SEE THE DIFFERENCE ============ -->
+<section class="section pg demo" id="difference" aria-labelledby="demo-title" data-page data-title="See the difference" tabindex="-1" data-loop>
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">See the difference</p>
+    <h2 class="display section__title" id="demo-title"><span class="hl-white">Without it.</span> <span class="hl-red">With it.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <div class="demo__toggle" data-beat="1" data-reveal="slide" role="group" aria-label="Compare playback">
+    <button type="button" class="demo__btn" data-mode="without" aria-pressed="true" data-umami-event="demo-toggle" data-umami-event-mode="without">Without</button>
+    <button type="button" class="demo__btn" data-mode="with" aria-pressed="false" data-umami-event="demo-toggle" data-umami-event-mode="with">With Skip Solution</button>
+  </div>
+  <p class="sr-only" aria-live="polite" id="demo-live">Showing playback without Skip Solution: a pause prompt, a frozen background tab, then the playlist skips through every track.</p>
+
+  <div class="demo__screen" data-demo data-mode="without" data-beat="2" data-reveal="ink">
+    <div class="demo__bar" aria-hidden="true">
+      <span class="demo__dots"><i></i><i></i><i></i></span>
+      <span class="demo__tab">Your work</span>
+      <span class="demo__tab demo__tab--bg">&#9835; Focus playlist <small>background tab</small></span>
+    </div>
+    <div class="demo__player" aria-hidden="true">
+      <div class="demo__bars">
+        <i style="--h:.42;--i:0"></i><i style="--h:.7;--i:1"></i><i style="--h:.55;--i:2"></i><i style="--h:.9;--i:3"></i><i style="--h:.62;--i:4"></i><i style="--h:.35;--i:5"></i><i style="--h:.78;--i:6"></i><i style="--h:1;--i:7"></i><i style="--h:.66;--i:8"></i><i style="--h:.48;--i:9"></i><i style="--h:.84;--i:10"></i><i style="--h:.58;--i:11"></i><i style="--h:.4;--i:12"></i><i style="--h:.72;--i:13"></i><i style="--h:.95;--i:14"></i><i style="--h:.6;--i:15"></i><i style="--h:.38;--i:16"></i><i style="--h:.8;--i:17"></i><i style="--h:.52;--i:18"></i><i style="--h:.88;--i:19"></i><i style="--h:.64;--i:20"></i><i style="--h:.45;--i:21"></i><i style="--h:.74;--i:22"></i><i style="--h:.98;--i:23"></i><i style="--h:.57;--i:24"></i><i style="--h:.36;--i:25"></i><i style="--h:.69;--i:26"></i><i style="--h:.86;--i:27"></i><i style="--h:.5;--i:28"></i><i style="--h:.76;--i:29"></i><i style="--h:.44;--i:30"></i><i style="--h:.92;--i:31"></i>
+      </div>
+      <div class="dq" aria-hidden="true">
+        <p class="dq__head"><b>Up next</b><span class="dq__count" data-dq-count>Track 1 of 6</span></p>
+        <ol class="dq__list">
+          <li>Deep Focus Mix</li>
+          <li>Lo-fi Morning</li>
+          <li>Night Drive</li>
+          <li>Rain Study</li>
+          <li>Synth Flow</li>
+          <li>Coffee Beats</li>
+        </ol>
+      </div>
+      <div class="demo__glitch"></div>
+      <div class="demo__timeline">
+        <span class="demo__progress"></span>
+        <span class="demo__mark" style="--x:22%">SKIP</span>
+        <span class="demo__mark" style="--x:47%">SKIP</span>
+        <span class="demo__mark" style="--x:71%">SKIP</span>
+      </div>
+      <div class="demo__status">
+        <span class="demo__led"></span>
+        <span class="demo__msg">Playing</span>
+      </div>
+      <div class="demo__prompt">
+        <p>Video paused. Continue watching?</p>
+        <span>Yes</span>
+      </div>
+    </div>
+  </div>
+  <p class="demo__note" data-beat="3" data-reveal="slide">Illustration only. No audio plays on this page.</p>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#how" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#why-choose" data-next><span class="next-tab__label">Next: Why choose it</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: WHY CHOOSE ============ -->
+<section class="section pg benefits" id="why-choose" aria-labelledby="ben-title" data-page data-title="Why choose it" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">Why choose YouTube Music Skip Solution?</p>
+    <h2 class="display section__title" id="ben-title"><span class="hl-white">Small extension.</span> <span class="hl-red">Nonstop music.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <p class="ben__intro" data-beat="1" data-reveal="slide">Unlike complex tools, this extension operates entirely in the background with zero setup. It overrides aggressive browser tab sleeping and automatically clicks through hidden inactivity prompts so your flow stays locked in.</p>
+  <ul class="trio swipe">
+    <li class="trio__item" data-beat="2" data-reveal="ink">
+      <h3 class="trio__title"><span aria-hidden="true">&#10022;</span> ZERO SETUP:</h3>
+      <p>Install it and forget it. No per-tab switches required.</p>
+    </li>
+    <li class="trio__item" data-beat="3" data-reveal="ink">
+      <h3 class="trio__title"><span aria-hidden="true">&#10022;</span> FLOW PROTECTION:</h3>
+      <p>Ideal for deep work, study sessions, and long background listening.</p>
+    </li>
+    <li class="trio__item" data-beat="4" data-reveal="ink">
+      <h3 class="trio__title"><span aria-hidden="true">&#10022;</span> PRIVACY-FIRST:</h3>
+      <p>No tracking, no data collection, no telemetry, and no bloatware.</p>
+    </li>
+  </ul>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#difference" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#benefits" data-next><span class="next-tab__label">Next: Benefits</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: BENEFITS ============ -->
+<section class="section pg benefits benefits--more" id="benefits" aria-labelledby="ben2-title" data-page data-title="Benefits" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">Benefits</p>
+    <h2 class="display section__title" id="ben2-title"><span class="hl-white">Works everywhere.</span> <span class="hl-red">Weighs nothing.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <ul class="cards cards--rest swipe">
+    <li class="card" data-beat="1" data-reveal="ink">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg>
+      <h3>YouTube and YouTube Music</h3>
+      <p>Works on both, in any background tab.</p>
+    </li>
+    <li class="card" data-beat="2" data-reveal="ink">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="14" height="11" rx="1.5"/><path d="M6 19h6M9 15v4"/><rect x="17" y="9" width="5" height="11" rx="1.2"/></svg>
+      <h3>Every major browser</h3>
+      <p>Chrome, Firefox (incl. Android 142+), Edge, Brave and Opera.</p>
+    </li>
+    <li class="card" data-beat="3" data-reveal="ink">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C9 4 5 11 5 19"/><path d="M20 4c0 9-5 13-12 13"/><path d="M4 20l4-4"/></svg>
+      <h3>Lightweight</h3>
+      <p>Only runs on YouTube tabs and stays out of the way.</p>
+    </li>
+  </ul>
+  <p class="ben__strap" data-beat="4" data-reveal="slide">Never let an automated browser stall break your deep focus again. Keep your audio unthrottled and live!</p>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#why-choose" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#pricing" data-next><span class="next-tab__label">Next: Pricing</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- Testimonials: add once real reviews exist. Do not ship invented quotes.
+<section class="section quotes" aria-labelledby="quotes-title">
+  <header class="section__head"><h2 class="display section__title" id="quotes-title"><span class="hl-white">Fan</span> <span class="hl-red">mail</span></h2></header>
+  <ul class="cards">
+    <li class="card"><blockquote><p>"QUOTE"</p></blockquote><p class="card__who">NAME, Chrome Web Store</p></li>
+  </ul>
+</section>
+-->
+
+
+
+
+<!-- ============ PAGE: PRICING ============ -->
+<section class="section pg pricing" id="pricing" aria-labelledby="price-title" data-page data-title="Pricing" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">Pricing</p>
+    <h2 class="display section__title" id="price-title"><span class="hl-white">One price.</span> <span class="hl-red">Forever.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <div class="tag" data-beat="1" data-reveal="pop">
+    <span class="tag__hole" aria-hidden="true"></span>
+    <p class="tag__burst" aria-hidden="true">No subscription!</p>
+    <p class="tag__lead">Try it free for <span data-cfg="trial-days">7</span> days.</p>
+    <p class="tag__price"><span data-cfg="price">$1.99</span> <small>once</small></p>
+    <p class="tag__text">Install free, start your <span data-cfg="trial-days">7</span>-day trial from the extension, then unlock lifetime access with a one-time <span data-cfg="price">$1.99</span> in-app purchase. No subscription.</p>
+    <p class="tag__cta"><a class="btn btn--store is-primary btn--auto" href="#download" data-store="auto" data-section="pricing"><svg class="btn__mark" aria-hidden="true"><use href="#mark-ext"/></svg><span class="btn__txt"><span class="btn__label">Get the extension</span><span class="btn__sub">Chrome, Firefox, Edge, Brave, Opera</span></span></a></p>
+    <p class="iap-note">Offers in-app purchases</p>
+    <p class="tag__small">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      Secure payment by Stripe via ExtensionPay.
+    </p>
+  </div>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#benefits" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#faq" data-next><span class="next-tab__label">Next: FAQ</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: FAQ ============ -->
+<section class="section pg faq" id="faq" aria-labelledby="faq-title" data-page data-title="FAQ" tabindex="-1">
+<div class="page">
+  <header class="page__head section__head" data-reveal="slide" data-beat="0">
+    <p class="kicker">FAQ</p>
+    <h2 class="display section__title" id="faq-title"><span class="hl-white">Questions?</span> <span class="hl-red">Answers.</span></h2>
+  </header>
+  <div class="page__body"><div class="page__fit">
+  <div class="faq__list">
+    <details id="faq-skipping" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.00s">
+      <summary>YouTube Music keeps skipping songs. Will this fix it?</summary>
+      <div class="faq__a">
+      <p>That&rsquo;s exactly what it&rsquo;s for. When YouTube Music plays in a background tab, the browser can throttle or unload the tab and the playlist starts jumping to the next track again and again. The extension keeps the tab awake so the current song plays to the end.</p>
+      </div>
+    </details>
+    <details id="faq-paused" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.06s">
+      <summary>Why does YouTube pause in a background tab and ask &ldquo;Video paused. Continue watching?&rdquo;</summary>
+      <div class="faq__a">
+      <p>YouTube shows that prompt when it thinks nobody is listening, and browsers slow down tabs you&rsquo;re not looking at. Skip Solution answers the prompt automatically and stops the throttling, so YouTube Music stops stopping.</p>
+      </div>
+    </details>
+    <details id="faq-youtube-music" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.12s">
+      <summary>Does it work with YouTube Music?</summary>
+      <div class="faq__a">
+      <p>Yes. It works on both YouTube and YouTube Music: it keeps playback going in background tabs, answers the &ldquo;Continue watching?&rdquo; prompt for you, and stops the automatic track-skipping and tab-unloading bugs.</p>
+      </div>
+    </details>
+    <details id="faq-data" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.18s">
+      <summary>Does it collect my data?</summary>
+      <div class="faq__a">
+      <p>No. No personal data, browsing history or analytics are collected. Page URLs are checked locally, on your device, only to detect youtube.com. Payments are handled by ExtensionPay and Stripe.</p>
+      <p>Permissions used: storage, scripting, youtube.com and extensionpay.com. Read the full <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </details>
+    <details id="faq-trial" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.24s">
+      <summary>What happens after the trial?</summary>
+      <div class="faq__a">
+      <p>Install is free. Start your <span data-cfg="trial-days">7</span>-day trial from the extension popup; after that, unlock lifetime access with a one-time <span data-cfg="price">$1.99</span> in-app purchase. No subscription, no recurring charges. Payment runs through ExtensionPay with Stripe.</p>
+      </div>
+    </details>
+    <details id="faq-chromium" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.30s">
+      <summary>Does it work on Microsoft Edge, Brave or Opera?</summary>
+      <div class="faq__a">
+      <p>Yes. They are Chromium browsers and install the Chrome version from the <a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=faq" data-store="chrome" data-section="faq" data-umami-event="store-click" data-umami-event-store="chrome" data-umami-event-section="faq">Chrome Web Store</a>:</p>
+      <ul>
+        <li><strong>Edge:</strong> open the Chrome Web Store page, click &ldquo;Allow extensions from other stores&rdquo; when Edge asks, then &ldquo;Get&rdquo; / &ldquo;Add to Chrome&rdquo;.</li>
+        <li><strong>Brave:</strong> open the Chrome Web Store page and click &ldquo;Add to Brave&rdquo; / &ldquo;Add to Chrome&rdquo;.</li>
+        <li><strong>Opera:</strong> first install Opera&rsquo;s official <a href="https://addons.opera.com/en/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> add-on, then open the Chrome Web Store page and click &ldquo;Add to Opera&rdquo;.</li>
+      </ul>
+      </div>
+    </details>
+    <details id="faq-firefox-android" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.36s">
+      <summary>Does it work on Firefox for Android?</summary>
+      <div class="faq__a">
+      <p>Yes, on Firefox for Android 142 or newer. Install it from Firefox Add-ons, the same as on desktop.</p>
+      </div>
+    </details>
+    <details id="faq-battery" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.42s">
+      <summary>Does it use much battery or CPU?</summary>
+      <div class="faq__a">
+      <p>No. It&rsquo;s lightweight and only runs on YouTube tabs.</p>
+      </div>
+    </details>
+    <details id="faq-contact" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.48s">
+      <summary>Other questions?</summary>
+      <div class="faq__a">
+      <p>Write to <a data-contact href="mailto:bigbluecanvas@gmail.com">bigbluecanvas@gmail.com</a> and we&rsquo;ll get back to you.</p>
+      </div>
+    </details>
+  </div>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#pricing" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--plain" href="#download" data-next><span class="next-tab__label">Next: The end</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+<!-- ============ PAGE: THE END / DOWNLOAD ============ -->
+<section class="section pg final" id="download" aria-labelledby="final-title" data-page data-title="The end" tabindex="-1" data-loop>
+<div class="page">
+  <div class="page__body"><div class="page__fit">
+    <div class="final__panel" data-beat="0" data-reveal="ink">
+    <h2 class="display final__title" id="final-title" data-beat="1" data-reveal="slide">
+      <span class="hl-white">The end&hellip;</span>
+      <span class="hl-red">of skipped tracks.</span>
+    </h2>
+    <ul class="recap" data-beat="2" data-reveal="slide">
+      <li>Keeps playing in background tabs</li>
+      <li>Answers &ldquo;Are you still there?&rdquo; for you</li>
+      <li>No random skips, no tab unloading</li>
+      <li>Chrome, Firefox, Edge, Brave and Opera</li>
+    </ul>
+    <div class="download" data-beat="3" data-reveal="slide">
+      <div class="store-row store-row--center">
+        <a class="btn btn--store" data-store="chrome" data-section="final"
+           href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=final" data-umami-event="store-click" data-umami-event-store="chrome" data-umami-event-section="final">
+          <svg class="btn__mark" aria-hidden="true"><use href="#mark-chrome"/></svg>
+          <span class="btn__txt"><span class="btn__label">Get it for Chrome</span><span class="btn__sub">Available on Chrome Web Store</span></span>
+        </a>
+        <a class="btn btn--store" data-store="firefox" data-section="final"
+           href="https://addons.mozilla.org/en-US/firefox/addon/youtube-music-skip-solution/?utm_source=website&amp;utm_medium=final" data-umami-event="store-click" data-umami-event-store="firefox" data-umami-event-section="final">
+          <svg class="btn__mark" aria-hidden="true"><use href="#mark-firefox"/></svg>
+          <span class="btn__txt"><span class="btn__label">Get it for Firefox</span><span class="btn__sub">Available on Firefox Add-ons</span></span>
+        </a>
+      </div>
+      <p class="also"><span class="also__lead">Also works on</span><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=edge-final" data-store="chrome" data-section="final" data-also="edge" data-umami-event="store-click" data-umami-event-store="edge" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-edge"/></svg>Edge</a><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=brave-final" data-store="chrome" data-section="final" data-also="brave" data-umami-event="store-click" data-umami-event-store="brave" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-brave"/></svg>Brave</a><a href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=also-works&amp;utm_content=opera-final" data-store="chrome" data-section="final" data-also="opera" aria-describedby="opera-note-final" data-umami-event="store-click" data-umami-event-store="opera" data-umami-event-section="also-works"><svg aria-hidden="true"><use href="#mark-opera"/></svg>Opera<sup>*</sup></a></p>
+      <p class="also__note" id="opera-note-final"><sup>*</sup>Opera: add the official <a href="https://addons.opera.com/en/extensions/details/install-chrome-extensions/">Install Chrome Extensions</a> add-on first. All three use the Chrome Web Store.</p>
+      <p class="download__line">Available for Chrome, Firefox, Edge, Brave and Opera on desktop.</p>
+    </div>
+    <div class="final__small" data-beat="4" data-reveal="slide">
+      <p class="final__trial">Install free, start your <span data-cfg="trial-days">7</span>-day trial from the extension, then <span data-cfg="price">$1.99</span> once as an in-app purchase. No subscription.</p>
+      <p class="iap-note">Offers in-app purchases</p>
+      <p class="final__contact">Questions? <a data-contact href="mailto:bigbluecanvas@gmail.com">bigbluecanvas@gmail.com</a></p>
+    </div>
+    </div>
+  </div></div>
+  <div class="page__foot">
+    <a class="prev-tab" href="#faq" data-prev><svg class="prev-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="prev-tab__label"><span class="prev-tab__short">Prev</span><span class="prev-tab__long">Previous</span></span></a>
+    <button type="button" class="page__replay" data-replay aria-label="Replay this page"><span aria-hidden="true">&#8635;</span><span class="page__replay-txt" aria-hidden="true">Replay</span></button>
+    <button type="button" class="page__skip" data-skip>Show all <span aria-hidden="true">&raquo;</span></button>
+    <a class="next-tab next-tab--cta btn--auto" href="#cover" data-store="auto" data-section="final"><svg class="btn__mark next-tab__mark" aria-hidden="true"><use href="#mark-ext"/></svg><span class="next-tab__kicker btn__sub">The end</span><span class="next-tab__label btn__label">Read it again from page 1</span><svg class="next-tab__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+</section>
+
+</main>
+
+<!-- ============ PAGE COUNTER (whole site) ============ -->
+<nav class="pbar" aria-label="Pages">
+  <p class="pbar__count"><span class="pbar__word">Page </span><b data-page-no>1</b>&nbsp;/&nbsp;13</p>
+  <div class="pbar__dots">
+    <a class="pbar__dot" href="#cover" aria-label="Page 1: Cover"></a>
+    <a class="pbar__dot is-chapter" href="#chapter-1" aria-label="Page 2: Ch. 1: Starting the day"></a>
+    <a class="pbar__dot is-chapter" href="#chapter-2" aria-label="Page 3: Ch. 2: Deep work mode"></a>
+    <a class="pbar__dot is-chapter" href="#chapter-3" aria-label="Page 4: Ch. 3: Suddenly… chaos"></a>
+    <a class="pbar__dot is-chapter" href="#chapter-4" aria-label="Page 5: Ch. 4: Skip no more!"></a>
+    <a class="pbar__dot" href="#why" aria-label="Page 6: Why I built it"></a>
+    <a class="pbar__dot" href="#how" aria-label="Page 7: How it works"></a>
+    <a class="pbar__dot" href="#difference" aria-label="Page 8: See the difference"></a>
+    <a class="pbar__dot" href="#why-choose" aria-label="Page 9: Why choose it"></a>
+    <a class="pbar__dot" href="#benefits" aria-label="Page 10: Benefits"></a>
+    <a class="pbar__dot" href="#pricing" aria-label="Page 11: Pricing"></a>
+    <a class="pbar__dot" href="#faq" aria-label="Page 12: FAQ"></a>
+    <a class="pbar__dot" href="#download" aria-label="Page 13: The end"></a>
+  </div>
+  <a class="pbar__skip" href="#download"><span class="pbar__skip-long">Skip to download</span><span class="pbar__skip-short">Download</span></a>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__brand"><img src="assets/img/icon-128.png?v=202611062135" width="128" height="128" alt="" loading="lazy" decoding="async"> YouTube Music Skip Solution</p>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="privacy.html">Privacy policy</a>
+      <a data-contact href="mailto:bigbluecanvas@gmail.com">Contact</a>
+    </nav>
+    <p class="footer__disclaimer">Not affiliated with, endorsed or sponsored by YouTube or Google. YouTube is a trademark of Google LLC.</p>
+    <p class="footer__copy">&copy; <span data-year>2026</span> BigBlueCanvas</p>
+  </div>
+</footer>
+
+<script src="js/main.js?v=202611062135" defer></script>
+</body>
+</html>
