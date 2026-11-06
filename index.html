@@ -25,16 +25,16 @@
 <meta name="twitter:description" content="Keeps YouTube and YouTube Music playing in background tabs. No random skips, no freezes, no pause prompts.">
 <meta name="twitter:image" content="https://skipnomore.site/assets/img/og-image.jpg">
 <link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=202611062305">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=202611062305">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=202611062305">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=202611062311">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=202611062311">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=202611062311">
 <link rel="manifest" href="site.webmanifest">
 
 <!-- Font preloads are injected only over http(s): a CORS font preload fails on file:// (fonts still load there via @font-face). -->
 <script>
   document.documentElement.classList.add('js');
   if (location.protocol !== 'file:') {
-    ['assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062305', 'assets/fonts/inter-latin-wght-normal.woff2?v=202611062305'].forEach(function (href) {
+    ['assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062311', 'assets/fonts/inter-latin-wght-normal.woff2?v=202611062311'].forEach(function (href) {
       var l = document.createElement('link');
       l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = href;
       document.head.appendChild(l);
@@ -60,12 +60,12 @@
   }
 </script>
 <link rel="preload" as="image" type="image/webp"
-      imagesrcset="assets/img/panel-01-828.webp?v=202611062305 828w, assets/img/panel-01-1280.webp?v=202611062305 1280w, assets/img/panel-01-1920.webp?v=202611062305 1920w, assets/img/panel-01-2560.webp?v=202611062305 2560w, assets/img/panel-01-3840.webp?v=202611062305 3840w"
+      imagesrcset="assets/img/panel-01-828.webp?v=202611062311 828w, assets/img/panel-01-1280.webp?v=202611062311 1280w, assets/img/panel-01-1920.webp?v=202611062311 1920w, assets/img/panel-01-2560.webp?v=202611062311 2560w, assets/img/panel-01-3840.webp?v=202611062311 3840w"
       imagesizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw" fetchpriority="high">
 
-<link rel="stylesheet" href="css/style.css?v=202611062305">
+<link rel="stylesheet" href="css/style.css?v=202611062311">
 
-<!-- Pricing, store URLs and contact live in CONFIG at the top of js/main.js.
+<!-- Pricing and store URLs live in CONFIG at the top of js/main.js.
      Values written in this HTML are no-JS fallbacks only. -->
 <script type="application/ld+json" id="ld-app">
 {
@@ -94,7 +94,6 @@
   "@type": "Organization",
   "@id": "https://skipnomore.site/#org",
   "name": "BigBlueCanvas",
-  "email": "bigbluecanvas@gmail.com",
   "url": "https://skipnomore.site/",
   "logo": "https://skipnomore.site/assets/img/icon-512.png"
 }
@@ -167,14 +166,6 @@
         "@type": "Answer",
         "text": "No. It’s lightweight and only runs on YouTube tabs."
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Other questions?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Write to bigbluecanvas@gmail.com and we’ll get back to you."
-      }
     }
   ]
 }
@@ -197,7 +188,7 @@
 <header class="nav" id="top">
   <div class="nav__inner">
     <a class="brand" href="#cover" aria-label="YouTube Music Skip Solution, back to top">
-      <img src="assets/img/icon-128.png?v=202611062305" width="128" height="128" alt="" class="brand__logo">
+      <img src="assets/img/icon-128.png?v=202611062311" width="128" height="128" alt="" class="brand__logo">
       <span class="brand__name" aria-hidden="true"><span class="brand__yt">YouTube Music </span>Skip Solution</span>
     </a>
     <nav class="nav__links" id="nav-links" aria-label="Main">
@@ -221,8 +212,8 @@
 <div class="page page--cover">
   <div class="cover__frame" data-tilt>
     <div class="cover__art" data-tilt-layer="-1">
-      <picture data-img="panel-01" data-sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062305 828w, assets/img/panel-01-1280.webp?v=202611062305 1280w, assets/img/panel-01-1920.webp?v=202611062305 1920w, assets/img/panel-01-2560.webp?v=202611062305 2560w, assets/img/panel-01-3840.webp?v=202611062305 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><img fetchpriority="high" decoding="async"
-             alt="Comic cover art: a listener in headphones at a calm desk, a big play button glowing on the monitor." src="assets/img/panel-01-828.jpg?v=202611062305" srcset="assets/img/panel-01-828.jpg?v=202611062305 828w, assets/img/panel-01-1280.jpg?v=202611062305 1280w, assets/img/panel-01-1920.jpg?v=202611062305 1920w, assets/img/panel-01-2560.jpg?v=202611062305 2560w, assets/img/panel-01-3840.jpg?v=202611062305 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw" width="3840" height="1926"></picture>
+      <picture data-img="panel-01" data-sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062311 828w, assets/img/panel-01-1280.webp?v=202611062311 1280w, assets/img/panel-01-1920.webp?v=202611062311 1920w, assets/img/panel-01-2560.webp?v=202611062311 2560w, assets/img/panel-01-3840.webp?v=202611062311 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw"><img fetchpriority="high" decoding="async"
+             alt="Comic cover art: a listener in headphones at a calm desk, a big play button glowing on the monitor." src="assets/img/panel-01-828.jpg?v=202611062311" srcset="assets/img/panel-01-828.jpg?v=202611062311 828w, assets/img/panel-01-1280.jpg?v=202611062311 1280w, assets/img/panel-01-1920.jpg?v=202611062311 1920w, assets/img/panel-01-2560.jpg?v=202611062311 2560w, assets/img/panel-01-3840.jpg?v=202611062311 3840w" sizes="(max-width: 699px) 250vw, (max-width: 1100px) 130vw, 110vw" width="3840" height="1926"></picture>
     </div>
     <div class="cover__wave" aria-hidden="true">
       <svg class="wave-scroll" viewBox="0 0 800 60" preserveAspectRatio="none">
@@ -282,30 +273,30 @@
         <div class="page__grid ch1__grid">
           <figure class="panel p-wide" data-reveal="ink" data-beat="1">
             <div class="panel__art" data-hover>
-              <picture data-img="panel-01" data-sizes="(min-width: 700px) 74vw, 100vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062305 828w, assets/img/panel-01-1280.webp?v=202611062305 1280w, assets/img/panel-01-1920.webp?v=202611062305 1920w, assets/img/panel-01-2560.webp?v=202611062305 2560w, assets/img/panel-01-3840.webp?v=202611062305 3840w" sizes="(min-width: 700px) 74vw, 100vw"><img alt="Wide shot: morning at the desk. A steaming mug, a plant, a desk lamp, and a red waveform rolling across the monitor while the listener settles in with headphones on." loading="lazy" decoding="async" src="assets/img/panel-01-828.jpg?v=202611062305" srcset="assets/img/panel-01-828.jpg?v=202611062305 828w, assets/img/panel-01-1280.jpg?v=202611062305 1280w, assets/img/panel-01-1920.jpg?v=202611062305 1920w, assets/img/panel-01-2560.jpg?v=202611062305 2560w, assets/img/panel-01-3840.jpg?v=202611062305 3840w" sizes="(min-width: 700px) 74vw, 100vw" width="3840" height="1926"></picture>
+              <picture data-img="panel-01" data-sizes="(min-width: 700px) 74vw, 100vw"><source type="image/webp" srcset="assets/img/panel-01-828.webp?v=202611062311 828w, assets/img/panel-01-1280.webp?v=202611062311 1280w, assets/img/panel-01-1920.webp?v=202611062311 1920w, assets/img/panel-01-2560.webp?v=202611062311 2560w, assets/img/panel-01-3840.webp?v=202611062311 3840w" sizes="(min-width: 700px) 74vw, 100vw"><img alt="Wide shot: morning at the desk. A steaming mug, a plant, a desk lamp, and a red waveform rolling across the monitor while the listener settles in with headphones on." loading="lazy" decoding="async" src="assets/img/panel-01-828.jpg?v=202611062311" srcset="assets/img/panel-01-828.jpg?v=202611062311 828w, assets/img/panel-01-1280.jpg?v=202611062311 1280w, assets/img/panel-01-1920.jpg?v=202611062311 1920w, assets/img/panel-01-2560.jpg?v=202611062311 2560w, assets/img/panel-01-3840.jpg?v=202611062311 3840w" sizes="(min-width: 700px) 74vw, 100vw" width="3840" height="1926"></picture>
             </div>
             <figcaption class="caption caption--tl" data-reveal="caption" data-beat="2">7:57 AM. Coffee&rsquo;s hot. Playlist&rsquo;s on.</figcaption>
           </figure>
           <figure class="panel p-head" data-reveal="ink" data-beat="3">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-01-head" data-sizes="(min-width: 700px) 26vw, 50vw"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062305 480w, assets/img/cu-01-head-800.webp?v=202611062305 800w, assets/img/cu-01-head.webp?v=202611062305 832w" sizes="(min-width: 700px) 26vw, 50vw"><img alt="Close-up: the back of the listener's head, big headphones on, hands on the keyboard." loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062305" srcset="assets/img/cu-01-head-480.jpg?v=202611062305 480w, assets/img/cu-01-head-800.jpg?v=202611062305 800w, assets/img/cu-01-head.jpg?v=202611062305 832w" sizes="(min-width: 700px) 26vw, 50vw" width="832" height="800"></picture>
+              <picture data-img="cu-01-head" data-sizes="(min-width: 700px) 26vw, 50vw"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062311 480w, assets/img/cu-01-head-800.webp?v=202611062311 800w, assets/img/cu-01-head.webp?v=202611062311 832w" sizes="(min-width: 700px) 26vw, 50vw"><img alt="Close-up: the back of the listener's head, big headphones on, hands on the keyboard." loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062311" srcset="assets/img/cu-01-head-480.jpg?v=202611062311 480w, assets/img/cu-01-head-800.jpg?v=202611062311 800w, assets/img/cu-01-head.jpg?v=202611062311 832w" sizes="(min-width: 700px) 26vw, 50vw" width="832" height="800"></picture>
             </div>
             <p class="bubble bubble--head" data-reveal="pop" data-beat="4">Perfect.</p>
           </figure>
           <figure class="panel p-mug" data-reveal="ink" data-beat="4">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-01-mug" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-mug-480.webp?v=202611062305 480w, assets/img/cu-01-mug.webp?v=202611062305 512w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the coffee mug, still steaming." loading="lazy" decoding="async" src="assets/img/cu-01-mug.jpg?v=202611062305" srcset="assets/img/cu-01-mug-480.jpg?v=202611062305 480w, assets/img/cu-01-mug.jpg?v=202611062305 512w" sizes="(min-width: 700px) 13vw, 25vw" width="512" height="976"></picture>
+              <picture data-img="cu-01-mug" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-mug-480.webp?v=202611062311 480w, assets/img/cu-01-mug.webp?v=202611062311 512w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the coffee mug, still steaming." loading="lazy" decoding="async" src="assets/img/cu-01-mug.jpg?v=202611062311" srcset="assets/img/cu-01-mug-480.jpg?v=202611062311 480w, assets/img/cu-01-mug.jpg?v=202611062311 512w" sizes="(min-width: 700px) 13vw, 25vw" width="512" height="976"></picture>
             </div>
             <span class="sfx sfx--slurp" aria-hidden="true" data-reveal="sfx" data-beat="5">Slurp!</span>
           </figure>
           <figure class="panel p-lamp" data-reveal="ink" data-beat="5">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-01-lamp" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-lamp-480.webp?v=202611062305 480w, assets/img/cu-01-lamp.webp?v=202611062305 656w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the desk lamp throws a warm red pool of light." loading="lazy" decoding="async" src="assets/img/cu-01-lamp.jpg?v=202611062305" srcset="assets/img/cu-01-lamp-480.jpg?v=202611062305 480w, assets/img/cu-01-lamp.jpg?v=202611062305 656w" sizes="(min-width: 700px) 13vw, 25vw" width="656" height="960"></picture>
+              <picture data-img="cu-01-lamp" data-sizes="(min-width: 700px) 13vw, 25vw"><source type="image/webp" srcset="assets/img/cu-01-lamp-480.webp?v=202611062311 480w, assets/img/cu-01-lamp.webp?v=202611062311 656w" sizes="(min-width: 700px) 13vw, 25vw"><img alt="Insert: the desk lamp throws a warm red pool of light." loading="lazy" decoding="async" src="assets/img/cu-01-lamp.jpg?v=202611062311" srcset="assets/img/cu-01-lamp-480.jpg?v=202611062311 480w, assets/img/cu-01-lamp.jpg?v=202611062311 656w" sizes="(min-width: 700px) 13vw, 25vw" width="656" height="960"></picture>
             </div>
           </figure>
           <figure class="panel p-strip" data-reveal="ink" data-beat="6">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-01-wave" data-sizes="100vw"><source type="image/webp" srcset="assets/img/cu-01-wave-480.webp?v=202611062305 480w, assets/img/cu-01-wave-800.webp?v=202611062305 800w, assets/img/cu-01-wave.webp?v=202611062305 900w, assets/img/cu-01-wave-1200.webp?v=202611062305 1200w, assets/img/cu-01-wave-1600.webp?v=202611062305 1600w" sizes="100vw"><img alt="Strip panel: the play button on screen, a red waveform either side of it." loading="lazy" decoding="async" src="assets/img/cu-01-wave-800.jpg?v=202611062305" srcset="assets/img/cu-01-wave-480.jpg?v=202611062305 480w, assets/img/cu-01-wave-800.jpg?v=202611062305 800w, assets/img/cu-01-wave.jpg?v=202611062305 900w, assets/img/cu-01-wave-1200.jpg?v=202611062305 1200w, assets/img/cu-01-wave-1600.jpg?v=202611062305 1600w" sizes="100vw" width="1600" height="307"></picture>
+              <picture data-img="cu-01-wave" data-sizes="100vw"><source type="image/webp" srcset="assets/img/cu-01-wave-480.webp?v=202611062311 480w, assets/img/cu-01-wave-800.webp?v=202611062311 800w, assets/img/cu-01-wave.webp?v=202611062311 900w, assets/img/cu-01-wave-1200.webp?v=202611062311 1200w, assets/img/cu-01-wave-1600.webp?v=202611062311 1600w" sizes="100vw"><img alt="Strip panel: the play button on screen, a red waveform either side of it." loading="lazy" decoding="async" src="assets/img/cu-01-wave-800.jpg?v=202611062311" srcset="assets/img/cu-01-wave-480.jpg?v=202611062311 480w, assets/img/cu-01-wave-800.jpg?v=202611062311 800w, assets/img/cu-01-wave.jpg?v=202611062311 900w, assets/img/cu-01-wave-1200.jpg?v=202611062311 1200w, assets/img/cu-01-wave-1600.jpg?v=202611062311 1600w" sizes="100vw" width="1600" height="307"></picture>
             </div>
             <figcaption class="caption caption--br caption--red" data-reveal="caption" data-beat="7">Now playing. On repeat.</figcaption>
           </figure>
@@ -331,13 +322,13 @@
         <div class="page__grid ch2__grid">
           <figure class="panel p-main" data-reveal="ink" data-beat="1">
             <div class="panel__art" data-hover>
-              <picture data-img="panel-02" data-sizes="(min-width: 700px) 77vw, 100vw"><source type="image/webp" srcset="assets/img/panel-02-828.webp?v=202611062305 828w, assets/img/panel-02-1280.webp?v=202611062305 1280w, assets/img/panel-02-1920.webp?v=202611062305 1920w, assets/img/panel-02-2560.webp?v=202611062305 2560w, assets/img/panel-02-3840.webp?v=202611062305 3840w" sizes="(min-width: 700px) 77vw, 100vw"><img alt="Deep focus: code and a project dashboard fill the monitor, the music still playing, a bead of sweat on the listener's brow." loading="lazy" decoding="async" src="assets/img/panel-02-828.jpg?v=202611062305" srcset="assets/img/panel-02-828.jpg?v=202611062305 828w, assets/img/panel-02-1280.jpg?v=202611062305 1280w, assets/img/panel-02-1920.jpg?v=202611062305 1920w, assets/img/panel-02-2560.jpg?v=202611062305 2560w, assets/img/panel-02-3840.jpg?v=202611062305 3840w" sizes="(min-width: 700px) 77vw, 100vw" width="3840" height="1935"></picture>
+              <picture data-img="panel-02" data-sizes="(min-width: 700px) 77vw, 100vw"><source type="image/webp" srcset="assets/img/panel-02-828.webp?v=202611062311 828w, assets/img/panel-02-1280.webp?v=202611062311 1280w, assets/img/panel-02-1920.webp?v=202611062311 1920w, assets/img/panel-02-2560.webp?v=202611062311 2560w, assets/img/panel-02-3840.webp?v=202611062311 3840w" sizes="(min-width: 700px) 77vw, 100vw"><img alt="Deep focus: code and a project dashboard fill the monitor, the music still playing, a bead of sweat on the listener's brow." loading="lazy" decoding="async" src="assets/img/panel-02-828.jpg?v=202611062311" srcset="assets/img/panel-02-828.jpg?v=202611062311 828w, assets/img/panel-02-1280.jpg?v=202611062311 1280w, assets/img/panel-02-1920.jpg?v=202611062311 1920w, assets/img/panel-02-2560.jpg?v=202611062311 2560w, assets/img/panel-02-3840.jpg?v=202611062311 3840w" sizes="(min-width: 700px) 77vw, 100vw" width="3840" height="1935"></picture>
             </div>
             <figcaption class="caption caption--tl" data-reveal="caption" data-beat="2">You switch tabs. The music keeps you going&hellip;</figcaption>
           </figure>
           <figure class="panel p-code" data-reveal="ink" data-beat="3">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-02-code" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-code-480.webp?v=202611062305 480w, assets/img/cu-02-code-800.webp?v=202611062305 800w, assets/img/cu-02-code.webp?v=202611062305 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: lines of code glowing on the screen, the music tab still open." loading="lazy" decoding="async" src="assets/img/cu-02-code-800.jpg?v=202611062305" srcset="assets/img/cu-02-code-480.jpg?v=202611062305 480w, assets/img/cu-02-code-800.jpg?v=202611062305 800w, assets/img/cu-02-code.jpg?v=202611062305 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="729"></picture>
+              <picture data-img="cu-02-code" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-code-480.webp?v=202611062311 480w, assets/img/cu-02-code-800.webp?v=202611062311 800w, assets/img/cu-02-code.webp?v=202611062311 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: lines of code glowing on the screen, the music tab still open." loading="lazy" decoding="async" src="assets/img/cu-02-code-800.jpg?v=202611062311" srcset="assets/img/cu-02-code-480.jpg?v=202611062311 480w, assets/img/cu-02-code-800.jpg?v=202611062311 800w, assets/img/cu-02-code.jpg?v=202611062311 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="729"></picture>
               <div class="tabs" aria-hidden="true">
                 <span class="tabs__tab tabs__tab--music">&#9835; Focus playlist</span>
                 <span class="tabs__tab tabs__tab--code is-active">main.js</span>
@@ -346,7 +337,7 @@
           </figure>
           <figure class="panel p-head2" data-reveal="ink" data-beat="4">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-02-head" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-head-480.webp?v=202611062305 480w, assets/img/cu-02-head-800.webp?v=202611062305 800w, assets/img/cu-02-head.webp?v=202611062305 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: the listener leans in, sweat marks flying, totally in the zone." loading="lazy" decoding="async" src="assets/img/cu-02-head-800.jpg?v=202611062305" srcset="assets/img/cu-02-head-480.jpg?v=202611062305 480w, assets/img/cu-02-head-800.jpg?v=202611062305 800w, assets/img/cu-02-head.jpg?v=202611062305 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="743"></picture>
+              <picture data-img="cu-02-head" data-sizes="(min-width: 700px) 23vw, 50vw"><source type="image/webp" srcset="assets/img/cu-02-head-480.webp?v=202611062311 480w, assets/img/cu-02-head-800.webp?v=202611062311 800w, assets/img/cu-02-head.webp?v=202611062311 900w" sizes="(min-width: 700px) 23vw, 50vw"><img alt="Close-up: the listener leans in, sweat marks flying, totally in the zone." loading="lazy" decoding="async" src="assets/img/cu-02-head-800.jpg?v=202611062311" srcset="assets/img/cu-02-head-480.jpg?v=202611062311 480w, assets/img/cu-02-head-800.jpg?v=202611062311 800w, assets/img/cu-02-head.jpg?v=202611062311 900w" sizes="(min-width: 700px) 23vw, 50vw" width="900" height="743"></picture>
             </div>
             <span class="sfx sfx--tap" aria-hidden="true" data-reveal="sfx" data-beat="5">Tak tak tak</span>
           </figure>
@@ -373,7 +364,7 @@
         <div class="page__grid chaos">
           <figure class="panel c-main" data-reveal="ink" data-beat="1">
             <div class="panel__art" data-hover>
-              <picture data-img="panel-03" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-03-828.webp?v=202611062305 828w, assets/img/panel-03-1280.webp?v=202611062305 1280w, assets/img/panel-03-1920.webp?v=202611062305 1920w, assets/img/panel-03-2560.webp?v=202611062305 2560w, assets/img/panel-03-3840.webp?v=202611062305 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Chaos: skip windows explode out of the monitor, ERROR warnings flash, and the listener grabs their head in both hands." loading="lazy" decoding="async" src="assets/img/panel-03-828.jpg?v=202611062305" srcset="assets/img/panel-03-828.jpg?v=202611062305 828w, assets/img/panel-03-1280.jpg?v=202611062305 1280w, assets/img/panel-03-1920.jpg?v=202611062305 1920w, assets/img/panel-03-2560.jpg?v=202611062305 2560w, assets/img/panel-03-3840.jpg?v=202611062305 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
+              <picture data-img="panel-03" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-03-828.webp?v=202611062311 828w, assets/img/panel-03-1280.webp?v=202611062311 1280w, assets/img/panel-03-1920.webp?v=202611062311 1920w, assets/img/panel-03-2560.webp?v=202611062311 2560w, assets/img/panel-03-3840.webp?v=202611062311 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Chaos: skip windows explode out of the monitor, ERROR warnings flash, and the listener grabs their head in both hands." loading="lazy" decoding="async" src="assets/img/panel-03-828.jpg?v=202611062311" srcset="assets/img/panel-03-828.jpg?v=202611062311 828w, assets/img/panel-03-1280.jpg?v=202611062311 1280w, assets/img/panel-03-1920.jpg?v=202611062311 1920w, assets/img/panel-03-2560.jpg?v=202611062311 2560w, assets/img/panel-03-3840.jpg?v=202611062311 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
             </div>
             <figcaption class="caption caption--tl caption--alarm" data-reveal="caption" data-beat="8">Your playlist skips itself. Focus gone.</figcaption>
             <span class="sfx sfx--next1" aria-hidden="true" data-reveal="sfx" data-beat="4">Next!</span>
@@ -381,9 +372,9 @@
             <span class="sfx sfx--next3" aria-hidden="true" data-reveal="sfx" data-beat="4" style="--d: .44s">Next!</span>
             <span class="sfx sfx--next4" aria-hidden="true" data-reveal="sfx" data-beat="4" style="--d: .6s">Next!</span>
             <div class="c-skips" aria-hidden="true">
-              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062305"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062305" width="464" height="352"></picture>
-              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .12s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062305"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062305" width="464" height="352"></picture>
-              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .24s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062305"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062305" width="464" height="352"></picture>
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062311"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062311" width="464" height="352"></picture>
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .12s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062311"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062311" width="464" height="352"></picture>
+              <picture class="skip-tile" data-img="cu-03-skip" data-reveal="slam" data-beat="5" style="--d: .24s"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062311"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062311" width="464" height="352"></picture>
             </div>
             <div class="yt-dialog" role="img" aria-label="Then a pop-up on top: Video paused. Continue watching?" data-reveal="pop" data-beat="7">
               <p class="yt-dialog__text">Video paused. Continue watching?</p>
@@ -411,13 +402,13 @@
           </figure>
           <figure class="panel c-screen" data-reveal="slam" data-beat="5">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-03-screen" data-sizes="(min-width: 700px) 36vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-screen-480.webp?v=202611062305 480w, assets/img/cu-03-screen-800.webp?v=202611062305 800w, assets/img/cu-03-screen.webp?v=202611062305 900w, assets/img/cu-03-screen-1200.webp?v=202611062305 1200w, assets/img/cu-03-screen-1600.webp?v=202611062305 1600w" sizes="(min-width: 700px) 36vw, 42vw"><img alt="Close-up of the screen: stacks of SKIP pop-ups, warning triangles and an ERROR label." loading="lazy" decoding="async" src="assets/img/cu-03-screen-800.jpg?v=202611062305" srcset="assets/img/cu-03-screen-480.jpg?v=202611062305 480w, assets/img/cu-03-screen-800.jpg?v=202611062305 800w, assets/img/cu-03-screen.jpg?v=202611062305 900w, assets/img/cu-03-screen-1200.jpg?v=202611062305 1200w, assets/img/cu-03-screen-1600.jpg?v=202611062305 1600w" sizes="(min-width: 700px) 36vw, 42vw" width="1600" height="738"></picture>
+              <picture data-img="cu-03-screen" data-sizes="(min-width: 700px) 36vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-screen-480.webp?v=202611062311 480w, assets/img/cu-03-screen-800.webp?v=202611062311 800w, assets/img/cu-03-screen.webp?v=202611062311 900w, assets/img/cu-03-screen-1200.webp?v=202611062311 1200w, assets/img/cu-03-screen-1600.webp?v=202611062311 1600w" sizes="(min-width: 700px) 36vw, 42vw"><img alt="Close-up of the screen: stacks of SKIP pop-ups, warning triangles and an ERROR label." loading="lazy" decoding="async" src="assets/img/cu-03-screen-800.jpg?v=202611062311" srcset="assets/img/cu-03-screen-480.jpg?v=202611062311 480w, assets/img/cu-03-screen-800.jpg?v=202611062311 800w, assets/img/cu-03-screen.jpg?v=202611062311 900w, assets/img/cu-03-screen-1200.jpg?v=202611062311 1200w, assets/img/cu-03-screen-1600.jpg?v=202611062311 1600w" sizes="(min-width: 700px) 36vw, 42vw" width="1600" height="738"></picture>
             </div>
             <span class="sfx sfx--bzzt" aria-hidden="true" data-reveal="sfx" data-beat="5" style="--d: .45s">BZZT!</span>
           </figure>
           <figure class="panel c-head" data-reveal="slam" data-beat="6">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-03-head" data-sizes="(min-width: 700px) 21vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062305 480w, assets/img/cu-03-head-800.webp?v=202611062305 800w, assets/img/cu-03-head.webp?v=202611062305 900w" sizes="(min-width: 700px) 21vw, 42vw"><img alt="Close-up: hands clamped to the headphones, sweat flying." loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062305" srcset="assets/img/cu-03-head-480.jpg?v=202611062305 480w, assets/img/cu-03-head-800.jpg?v=202611062305 800w, assets/img/cu-03-head.jpg?v=202611062305 900w" sizes="(min-width: 700px) 21vw, 42vw" width="900" height="728"></picture>
+              <picture data-img="cu-03-head" data-sizes="(min-width: 700px) 21vw, 42vw"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062311 480w, assets/img/cu-03-head-800.webp?v=202611062311 800w, assets/img/cu-03-head.webp?v=202611062311 900w" sizes="(min-width: 700px) 21vw, 42vw"><img alt="Close-up: hands clamped to the headphones, sweat flying." loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062311" srcset="assets/img/cu-03-head-480.jpg?v=202611062311 480w, assets/img/cu-03-head-800.jpg?v=202611062311 800w, assets/img/cu-03-head.jpg?v=202611062311 900w" sizes="(min-width: 700px) 21vw, 42vw" width="900" height="728"></picture>
             </div>
           </figure>
         </div>
@@ -445,7 +436,7 @@
               <div class="ui-store" aria-hidden="true">
                 <div class="ui-bar"><i></i><i></i><i></i><span>chromewebstore.google.com</span></div>
                 <div class="ui-store__body">
-                  <img src="assets/img/icon-128.png?v=202611062305" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async">
+                  <img src="assets/img/icon-128.png?v=202611062311" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async">
                   <div><p class="ui-store__name"><span class="ui-wide">YouTube Music </span>Skip Solution</p><p class="ui-store__meta">Extension &middot; BigBlueCanvas</p></div>
                 </div>
                 <span class="ui-btn ui-press"><span class="ui-btn__a">Add to Chrome</span><span class="ui-btn__b">Added &#10003;</span><svg class="ui-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l6.5 19 2.6-7.6L21 11z"/></svg></span>
@@ -457,7 +448,7 @@
           <figure class="panel k-pop" data-reveal="ink" data-beat="3">
             <div class="panel__art art-ui" data-hover>
               <div class="ui-pop" aria-hidden="true">
-                <div class="ui-pop__head"><img src="assets/img/icon-128.png?v=202611062305" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async"><b>Skip Solution</b></div>
+                <div class="ui-pop__head"><img src="assets/img/icon-128.png?v=202611062311" width="128" height="128" alt="" class="ui-icon" loading="lazy" decoding="async"><b>Skip Solution</b></div>
                 <p class="ui-pop__txt">Keep YouTube Music playing in background tabs.</p>
                 <span class="ui-btn ui-press"><span class="ui-btn__a">Start <span data-cfg="trial-days">7</span>-day<span class="ui-wide"> free</span> trial</span><span class="ui-btn__b">Trial started &#10003;</span><svg class="ui-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l6.5 19 2.6-7.6L21 11z"/></svg></span>
                 <p class="ui-pop__small">Then unlock forever: <span data-cfg="price">$1.99</span></p>
@@ -468,7 +459,7 @@
           </figure>
           <figure class="panel p-on" data-reveal="ink" data-beat="5">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-04-on" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062305 480w, assets/img/cu-04-on-800.webp?v=202611062305 800w, assets/img/cu-04-on.webp?v=202611062305 900w" sizes="(min-width: 700px) 24vw, 50vw"><img alt="Close-up: the extension's music icon with its green ON badge, a steady red waveform behind it." loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062305" srcset="assets/img/cu-04-on-480.jpg?v=202611062305 480w, assets/img/cu-04-on-800.jpg?v=202611062305 800w, assets/img/cu-04-on.jpg?v=202611062305 900w" sizes="(min-width: 700px) 24vw, 50vw" width="900" height="714"></picture>
+              <picture data-img="cu-04-on" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062311 480w, assets/img/cu-04-on-800.webp?v=202611062311 800w, assets/img/cu-04-on.webp?v=202611062311 900w" sizes="(min-width: 700px) 24vw, 50vw"><img alt="Close-up: the extension's music icon with its green ON badge, a steady red waveform behind it." loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062311" srcset="assets/img/cu-04-on-480.jpg?v=202611062311 480w, assets/img/cu-04-on-800.jpg?v=202611062311 800w, assets/img/cu-04-on.jpg?v=202611062311 900w" sizes="(min-width: 700px) 24vw, 50vw" width="900" height="714"></picture>
             </div>
             <div class="toggle" aria-hidden="true">
               <span class="toggle__label">Skip Solution</span>
@@ -480,14 +471,14 @@
           </figure>
           <figure class="panel p-mug4" data-reveal="ink" data-beat="6">
             <div class="panel__art" data-hover>
-              <picture data-img="cu-04-mug" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-mug.webp?v=202611062305"><img alt="Insert: the coffee is still warm. Time to get back to work." loading="lazy" decoding="async" src="assets/img/cu-04-mug.jpg?v=202611062305" width="400" height="672"></picture>
+              <picture data-img="cu-04-mug" data-sizes="(min-width: 700px) 24vw, 50vw"><source type="image/webp" srcset="assets/img/cu-04-mug.webp?v=202611062311"><img alt="Insert: the coffee is still warm. Time to get back to work." loading="lazy" decoding="async" src="assets/img/cu-04-mug.jpg?v=202611062311" width="400" height="672"></picture>
             </div>
             <figcaption class="step-badge"><b>4</b> Back to work</figcaption>
             <p class="caption caption--ahh" data-reveal="caption" data-beat="6" style="--d: .1s">Ahh.</p>
           </figure>
           <figure class="panel splash" data-reveal="ink" data-beat="7">
             <div class="panel__art" data-hover>
-              <picture data-img="panel-04" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-04-828.webp?v=202611062305 828w, assets/img/panel-04-1280.webp?v=202611062305 1280w, assets/img/panel-04-1920.webp?v=202611062305 1920w, assets/img/panel-04-2560.webp?v=202611062305 2560w, assets/img/panel-04-3840.webp?v=202611062305 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Calm again: the extension's icon glows with a green ON badge, the waveform flows steadily, green light fills the room, and the words SKIP NO MORE! stretch across the panel." loading="lazy" decoding="async" src="assets/img/panel-04-828.jpg?v=202611062305" srcset="assets/img/panel-04-828.jpg?v=202611062305 828w, assets/img/panel-04-1280.jpg?v=202611062305 1280w, assets/img/panel-04-1920.jpg?v=202611062305 1920w, assets/img/panel-04-2560.jpg?v=202611062305 2560w, assets/img/panel-04-3840.jpg?v=202611062305 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
+              <picture data-img="panel-04" data-sizes="(min-width: 700px) 64vw, 100vw"><source type="image/webp" srcset="assets/img/panel-04-828.webp?v=202611062311 828w, assets/img/panel-04-1280.webp?v=202611062311 1280w, assets/img/panel-04-1920.webp?v=202611062311 1920w, assets/img/panel-04-2560.webp?v=202611062311 2560w, assets/img/panel-04-3840.webp?v=202611062311 3840w" sizes="(min-width: 700px) 64vw, 100vw"><img alt="Calm again: the extension's icon glows with a green ON badge, the waveform flows steadily, green light fills the room, and the words SKIP NO MORE! stretch across the panel." loading="lazy" decoding="async" src="assets/img/panel-04-828.jpg?v=202611062311" srcset="assets/img/panel-04-828.jpg?v=202611062311 828w, assets/img/panel-04-1280.jpg?v=202611062311 1280w, assets/img/panel-04-1920.jpg?v=202611062311 1920w, assets/img/panel-04-2560.jpg?v=202611062311 2560w, assets/img/panel-04-3840.jpg?v=202611062311 3840w" sizes="(min-width: 700px) 64vw, 100vw" width="3840" height="1926"></picture>
             </div>
             <figcaption class="caption caption--tl" data-reveal="caption" data-beat="8">One click. Music that never stops.</figcaption>
           </figure>
@@ -517,19 +508,19 @@
   <div class="page__body"><div class="page__fit">
   <ol class="origin__seq swipe">
     <li class="origin__beat" data-beat="1" data-reveal="ink">
-      <picture class="origin__thumb" data-img="cu-01-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062305 480w, assets/img/cu-01-head-800.webp?v=202611062305 800w, assets/img/cu-01-head.webp?v=202611062305 832w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062305" srcset="assets/img/cu-01-head-480.jpg?v=202611062305 480w, assets/img/cu-01-head-800.jpg?v=202611062305 800w, assets/img/cu-01-head.jpg?v=202611062305 832w" sizes="(min-width: 900px) 22vw, 108px" width="832" height="800"></picture>
+      <picture class="origin__thumb" data-img="cu-01-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-01-head-480.webp?v=202611062311 480w, assets/img/cu-01-head-800.webp?v=202611062311 800w, assets/img/cu-01-head.webp?v=202611062311 832w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-01-head-800.jpg?v=202611062311" srcset="assets/img/cu-01-head-480.jpg?v=202611062311 480w, assets/img/cu-01-head-800.jpg?v=202611062311 800w, assets/img/cu-01-head.jpg?v=202611062311 832w" sizes="(min-width: 900px) 22vw, 108px" width="832" height="800"></picture>
       <p class="caption origin__cap">I usually need music when I&rsquo;m doing important work, and also when I need my mind to relax through tedious tasks.</p>
     </li>
     <li class="origin__beat" data-beat="2" data-reveal="ink">
-      <picture class="origin__thumb" data-img="cu-03-skip" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062305"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062305" width="464" height="352"></picture>
+      <picture class="origin__thumb" data-img="cu-03-skip" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-skip.webp?v=202611062311"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-skip.jpg?v=202611062311" width="464" height="352"></picture>
       <p class="caption origin__cap">But when YouTube Music started skipping non-stop, there was nothing I could do.</p>
     </li>
     <li class="origin__beat" data-beat="3" data-reveal="ink">
-      <picture class="origin__thumb" data-img="cu-03-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062305 480w, assets/img/cu-03-head-800.webp?v=202611062305 800w, assets/img/cu-03-head.webp?v=202611062305 900w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062305" srcset="assets/img/cu-03-head-480.jpg?v=202611062305 480w, assets/img/cu-03-head-800.jpg?v=202611062305 800w, assets/img/cu-03-head.jpg?v=202611062305 900w" sizes="(min-width: 900px) 22vw, 108px" width="900" height="728"></picture>
+      <picture class="origin__thumb" data-img="cu-03-head" data-sizes="(min-width: 900px) 22vw, 108px"><source type="image/webp" srcset="assets/img/cu-03-head-480.webp?v=202611062311 480w, assets/img/cu-03-head-800.webp?v=202611062311 800w, assets/img/cu-03-head.webp?v=202611062311 900w" sizes="(min-width: 900px) 22vw, 108px"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-03-head-800.jpg?v=202611062311" srcset="assets/img/cu-03-head-480.jpg?v=202611062311 480w, assets/img/cu-03-head-800.jpg?v=202611062311 800w, assets/img/cu-03-head.jpg?v=202611062311 900w" sizes="(min-width: 900px) 22vw, 108px" width="900" height="728"></picture>
       <p class="caption caption--alarm origin__cap">I got so upset, my mood and creative flow broke instantly. I tried all sorts of browser gymnastics to stop it, but most of the time it simply didn&rsquo;t work.</p>
     </li>
     <li class="origin__beat" data-beat="4" data-reveal="ink">
-      <picture class="origin__thumb" data-img="cu-04-on" data-sizes="(min-width: 700px) 42vw, 80vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062305 480w, assets/img/cu-04-on-800.webp?v=202611062305 800w, assets/img/cu-04-on.webp?v=202611062305 900w" sizes="(min-width: 700px) 42vw, 80vw"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062305" srcset="assets/img/cu-04-on-480.jpg?v=202611062305 480w, assets/img/cu-04-on-800.jpg?v=202611062305 800w, assets/img/cu-04-on.jpg?v=202611062305 900w" sizes="(min-width: 700px) 42vw, 80vw" width="900" height="714"></picture>
+      <picture class="origin__thumb" data-img="cu-04-on" data-sizes="(min-width: 700px) 42vw, 80vw"><source type="image/webp" srcset="assets/img/cu-04-on-480.webp?v=202611062311 480w, assets/img/cu-04-on-800.webp?v=202611062311 800w, assets/img/cu-04-on.webp?v=202611062311 900w" sizes="(min-width: 700px) 42vw, 80vw"><img alt="" loading="lazy" decoding="async" src="assets/img/cu-04-on-800.jpg?v=202611062311" srcset="assets/img/cu-04-on-480.jpg?v=202611062311 480w, assets/img/cu-04-on-800.jpg?v=202611062311 800w, assets/img/cu-04-on.jpg?v=202611062311 900w" sizes="(min-width: 700px) 42vw, 80vw" width="900" height="714"></picture>
       <p class="caption origin__cap">I got tired of the constant annoyance and built a permanent solution. I wanted to never stop the music again, keep the audio live, and <strong>skip no more!</strong></p>
     </li>
   </ol>
@@ -831,12 +822,6 @@
       <p>No. It&rsquo;s lightweight and only runs on YouTube tabs.</p>
       </div>
     </details>
-    <details id="faq-contact" name="faq" data-beat="1" data-reveal="slide" style="--d: 0.48s">
-      <summary>Other questions?</summary>
-      <div class="faq__a">
-      <p>Write to <a data-contact href="mailto:bigbluecanvas@gmail.com">bigbluecanvas@gmail.com</a> and we&rsquo;ll get back to you.</p>
-      </div>
-    </details>
   </div>
   </div></div>
   <div class="page__foot">
@@ -883,7 +868,6 @@
     <div class="final__small" data-beat="4" data-reveal="slide">
       <p class="final__trial">Install free, start your <span data-cfg="trial-days">7</span>-day trial from the extension, then <span data-cfg="price">$1.99</span> once as an in-app purchase. No subscription.</p>
       <p class="iap-note">Offers in-app purchases</p>
-      <p class="final__contact">Questions? <a data-contact href="mailto:bigbluecanvas@gmail.com">bigbluecanvas@gmail.com</a></p>
     </div>
     </div>
   </div></div>
@@ -922,16 +906,15 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer__inner">
-    <p class="footer__brand"><img src="assets/img/icon-128.png?v=202611062305" width="128" height="128" alt="" loading="lazy" decoding="async"> YouTube Music Skip Solution</p>
+    <p class="footer__brand"><img src="assets/img/icon-128.png?v=202611062311" width="128" height="128" alt="" loading="lazy" decoding="async"> YouTube Music Skip Solution</p>
     <nav class="footer__links" aria-label="Footer">
       <a href="privacy.html">Privacy policy</a>
-      <a data-contact href="mailto:bigbluecanvas@gmail.com">Contact</a>
     </nav>
     <p class="footer__disclaimer">Not affiliated with, endorsed or sponsored by YouTube or Google. YouTube is a trademark of Google LLC.</p>
     <p class="footer__copy">&copy; <span data-year>2026</span> BigBlueCanvas</p>
   </div>
 </footer>
 
-<script src="js/main.js?v=202611062305" defer></script>
+<script src="js/main.js?v=202611062311" defer></script>
 </body>
 </html>

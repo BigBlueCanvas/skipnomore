@@ -17,7 +17,6 @@
     // data-domains. Run tools/set_domain.py after changing it to bake it into the files.
     siteUrl: 'https://skipnomore.site/'
   };
-  var CONTACT_EMAIL = 'bigbluecanvas@gmail.com';
 
   /* ================= PACING: how every page builds itself (ms) =================
      A page builds when it becomes the active page: after one click on NEXT / PREVIOUS /
@@ -72,10 +71,6 @@
   /* ---------- Config -> page ---------- */
   $$('[data-cfg="price"]').forEach(function (el) { el.textContent = CONFIG.price; });
   $$('[data-cfg="trial-days"]').forEach(function (el) { el.textContent = String(CONFIG.trialDays); });
-  $$('[data-contact]').forEach(function (el) {
-    el.href = 'mailto:' + CONTACT_EMAIL;
-    if (el.textContent.indexOf('@') !== -1) el.textContent = CONTACT_EMAIL;
-  });
   $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
   var OG_IMAGE = CONFIG.siteUrl + 'assets/img/og-image.jpg';
   [['link[rel="canonical"]', 'href', CONFIG.siteUrl],
