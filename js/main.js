@@ -643,6 +643,23 @@
     loopSections.forEach(function (s) { s.classList.add('in-view'); });
   }
 
+  /* ---------- Ambient cover wave: run only while its artwork is visible ---------- */
+  var cover = doc.getElementById('cover');
+  var coverWave = cover && cover.querySelector('.cover__wave');
+  if (coverWave && hasIO) {
+    var waveVisible = false;
+    var updateWave = function () {
+      cover.classList.toggle('is-wave-visible', waveVisible && !doc.hidden && !reduced());
+    };
+    var waveIO = new IntersectionObserver(function (entries) {
+      waveVisible = entries[0].isIntersecting;
+      updateWave();
+    }, { rootMargin: '-' + Math.round(navH()) + 'px 0px -' + Math.round(barH()) + 'px 0px' });
+    waveIO.observe(coverWave);
+    doc.addEventListener('visibilitychange', updateWave);
+    if (reduceMQ.addEventListener) reduceMQ.addEventListener('change', updateWave);
+  }
+
   /* ---------- Hover parallax: tilt + inner image shift (fine pointers only) ---------- */
   if (mq('(hover: hover) and (pointer: fine)').matches) {
     $$('[data-hover]').forEach(function (el) {

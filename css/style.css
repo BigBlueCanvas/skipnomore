@@ -7,7 +7,7 @@
 /* ---------- Fonts (self-hosted, OFL) ---------- */
 @font-face {
   font-family: "Archivo";
-  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062311") format("woff2");
+  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611062328") format("woff2");
   font-weight: 100 900;
   font-stretch: 62% 125%;
   font-style: normal;
@@ -15,14 +15,14 @@
 }
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611062311") format("woff2");
+  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611062328") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Bangers";
-  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611062311") format("woff2");
+  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611062328") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -738,7 +738,11 @@ button { font: inherit; color: inherit; }
   width: 200%;
   max-width: none;
   height: 100%;
+  /* Only the ambient cover waveform loops; story beats remain arrival-driven. */
+  animation: wave-scroll 10s linear infinite;
+  animation-play-state: paused;
 }
+.js .cover.is-wave-visible .wave-scroll { animation-play-state: running; }
 .wave-scroll path { fill: none; stroke: var(--red); stroke-width: 2.4; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 4px rgba(237, 36, 70, .9)); }
 .wave-scroll .wave-2 { stroke: var(--coral); stroke-width: 1.4; opacity: .7; }
 @keyframes wave-scroll { to { transform: translateX(-50%); } }
@@ -2489,6 +2493,27 @@ html:not(.js) .cover__frame { min-height: 560px; }
 .faq__list { gap: 8px; margin: 0 auto; }
 .faq summary { padding-top: 12px; padding-bottom: 12px; }
 .faq__a { max-height: var(--faq-a-max, 38vh); overflow: auto; overscroll-behavior: contain; }
+.page__begin {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 8px;
+  min-height: 44px;
+  margin: 6px 0;
+  padding: 8px 16px;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  font: 800 .8rem/1.1 var(--f-display);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.page__begin:hover { color: var(--red-ui); }
+.page__begin:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
 .final .page__body { align-items: center; }
 .final__panel { padding: clamp(14px, 3vh, 40px) clamp(14px, 4vw, 48px); }
 .final__title { font-size: clamp(2.2rem, 2.6vw + 3vh, 5.6rem); margin-bottom: clamp(10px, 2.2vh, 26px); }
