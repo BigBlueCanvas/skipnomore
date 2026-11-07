@@ -1,4 +1,4 @@
-# 🎵 YouTube Music Skip Solution (skipnomore.site)
+# 🎵 YouTube Music Skip Solution
 
 > **Keep your audio unthrottled, live, and skip no more!** A lightweight, privacy-first browser extension designed to protect your deep work focus. Compatible with **Google Chrome, Microsoft Edge, Brave, and Opera**.
 
