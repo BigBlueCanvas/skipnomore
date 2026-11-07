@@ -73,7 +73,8 @@
   $$('[data-cfg="trial-days"]').forEach(function (el) { el.textContent = String(CONFIG.trialDays); });
   $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
   var OG_IMAGE = CONFIG.siteUrl + 'assets/img/og-image.jpg';
-  [['link[rel="canonical"]', 'href', CONFIG.siteUrl],
+  // Homepage only (it is the page carrying #ld-app): other pages such as /help/ keep their own canonical/og:url.
+  if (doc.getElementById('ld-app')) [['link[rel="canonical"]', 'href', CONFIG.siteUrl],
    ['link[rel="alternate"][hreflang="en"]', 'href', CONFIG.siteUrl],
    ['link[rel="alternate"][hreflang="x-default"]', 'href', CONFIG.siteUrl],
    ['meta[property="og:url"]', 'content', CONFIG.siteUrl],

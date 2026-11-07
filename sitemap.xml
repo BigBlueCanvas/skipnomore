@@ -2,9 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://skipnomore.site/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://skipnomore.site/"/>
+  </url>
+  <url>
+    <loc>https://skipnomore.site/help/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://skipnomore.site/help/video-paused-continue-watching/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://skipnomore.site/help/youtube-music-stops-in-background-tab/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://skipnomore.site/help/youtube-music-skips-songs/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://skipnomore.site/privacy.html</loc>
