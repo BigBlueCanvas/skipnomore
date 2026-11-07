@@ -1,0 +1,126 @@
+/* Help articles: calm reading layout on top of style.css tokens (no story/comic page machinery). */
+/* The homepage story snaps pages and reserves room for its page bar; a reading page needs neither. */
+html.js:has(main.help) { scroll-snap-type: none; }
+.js body:has(main.help) { padding-bottom: 0; }
+.js main.help ~ .footer { scroll-snap-align: none; }
+.help {
+  max-width: calc(68ch + 2 * var(--pad, 16px));
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px) var(--pad, 16px) clamp(56px, 8vw, 96px);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.help p, .help li { color: var(--white); }
+.help .help__muted, .help .help__meta { color: var(--muted); }
+
+/* Breadcrumbs */
+.crumbs { margin: 0 0 22px; font-size: .9rem; color: var(--muted); }
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0; padding: 0; }
+.crumbs li { display: inline-flex; align-items: center; color: var(--muted); }
+.crumbs li + li::before { content: "\203A"; margin: 0 .55em; color: var(--red); font-weight: 800; }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--white); }
+.crumbs [aria-current] { color: var(--white); }
+
+/* Title banner: comic accent, readable size */
+.help__banner {
+  position: relative;
+  margin: 0 0 28px;
+  padding: 18px 18px 18px 22px;
+  background: var(--slate);
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.help__banner::before {
+  content: ""; position: absolute; left: -3px; top: -3px; bottom: -3px; width: 8px;
+  background: var(--red); border-radius: 10px 0 0 10px;
+}
+.help__kicker {
+  display: inline-block; margin: 0 0 10px; padding: 3px 9px;
+  background: var(--red-ui); color: #fff; border: 2px solid var(--ink);
+  font: 800 .72rem/1.2 var(--f-display); letter-spacing: .12em; text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+.help h1 {
+  font: 900 clamp(1.45rem, 6vw, 2.6rem)/1.08 var(--f-display);
+  font-stretch: 78%;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  color: var(--white);
+  overflow-wrap: anywhere;
+}
+.help__meta { margin: 12px 0 0; font-size: .88rem; }
+.help__lead { font-size: 1.15rem; line-height: 1.6; }
+
+.help h2 {
+  margin: 40px 0 12px;
+  padding-left: 14px;
+  border-left: 5px solid var(--red);
+  font: 900 clamp(1.3rem, 3.6vw, 1.65rem)/1.15 var(--f-display);
+  font-stretch: 80%;
+  text-transform: uppercase;
+}
+.help h3 { margin: 26px 0 8px; font: 800 1.12rem/1.3 var(--f-body); }
+.help ol, .help ul { padding-left: 1.4em; margin: 0 0 1.1em; }
+.help li { margin: 0 0 .55em; }
+.help li::marker { color: var(--red); font-weight: 800; }
+.help strong { color: #fff; }
+.help code {
+  padding: .05em .35em; border-radius: 4px;
+  background: var(--ink); color: var(--white);
+  font-size: .92em; overflow-wrap: anywhere;
+}
+.help__note {
+  margin: 0 0 1.1em; padding: 12px 14px;
+  background: rgba(39, 52, 72, .55); border-left: 4px solid var(--muted); border-radius: 0 8px 8px 0;
+  color: var(--muted); font-size: 1rem;
+}
+.help__src { font-size: .9rem; color: var(--muted); }
+.help__src a { color: var(--muted); }
+.help__src a:hover { color: var(--white); }
+
+/* "If you want it handled automatically" */
+.help-cta {
+  margin: 44px 0 0;
+  padding: 4px 18px 18px;
+  background: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px var(--slate), 5px 5px 0 2px #05070d;
+}
+.help-cta h2 { margin-top: 22px; }
+.help-cta .store-row { margin: 18px 0 10px; }
+.help-cta .btn { white-space: normal; }
+.help-cta__price { margin: 8px 0 0; font-size: .92rem; color: var(--muted); }
+.help-cta__price a { color: var(--white); white-space: nowrap; }
+
+/* FAQ */
+.help-faq details {
+  margin: 0 0 10px;
+  background: var(--slate);
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+}
+.help-faq summary {
+  cursor: pointer; padding: 12px 14px; min-height: 44px;
+  font-weight: 800; color: #fff;
+}
+.help-faq details > div { padding: 0 14px 4px; }
+
+/* Related articles and the help index */
+.help .help-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.help .help-list li { margin: 0; }
+.help-list a {
+  display: block; padding: 14px 16px;
+  background: var(--slate); color: #fff; text-decoration: none;
+  border: 3px solid var(--ink); border-radius: 10px; box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .16s var(--ease-out), box-shadow .16s var(--ease-out);
+}
+.help-list a:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); color: #fff; }
+.help-list strong { display: block; font: 800 1.08rem/1.3 var(--f-body); }
+.help-list strong::after { content: " \2192"; color: var(--red); }
+.help-list span { display: block; margin-top: 4px; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+@media (prefers-reduced-motion: reduce) {
+  .help-list a, .help-list a:hover { transition: none; transform: none; }
+}
