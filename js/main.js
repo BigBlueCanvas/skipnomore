@@ -200,16 +200,31 @@
     if (!el || el.classList.contains('is-in')) return;
     el.classList.add('is-in');
     if (el.getAttribute('data-reveal') === 'ink') {
+      // Settle the whole wrapper, not a bubbled child-image event. Cancel on reset so an
+      // earlier replay cannot light a panel in the middle of the next build.
       var done = function (e) {
-        if (e && e.propertyName !== 'clip-path') return;
+        if (e && (e.target !== el || e.propertyName !== 'opacity')) return;
+        cancelReveal(el);
         if (el.classList.contains('is-in')) el.classList.add('is-done');
-        el.removeEventListener('transitionend', done);
       };
+      var style = getComputedStyle(el);
+      var seconds = function (value) { return value.split(',').map(function (n) { return parseFloat(n) || 0; }); };
+      var durations = seconds(style.transitionDuration), delays = seconds(style.transitionDelay);
+      var wait = Math.max.apply(null, durations.map(function (n, i) { return n + delays[i % delays.length]; })) * 1000;
+      if (reduced() || !wait) { el.classList.add('is-done'); return; }
       el.addEventListener('transitionend', done);
-      setTimeout(done, 2400);
+      revealPlans.set(el, { done: done, timer: setTimeout(done, wait + 80) });
     }
   }
-  function unreveal(el) { el.classList.remove('is-in', 'is-done'); }
+  var revealPlans = new WeakMap();
+  function cancelReveal(el) {
+    var plan = revealPlans.get(el);
+    if (!plan) return;
+    clearTimeout(plan.timer);
+    el.removeEventListener('transitionend', plan.done);
+    revealPlans.delete(el);
+  }
+  function unreveal(el) { cancelReveal(el); el.classList.remove('is-in', 'is-done'); }
 
   /* ---------- Chapter 3 queue: the highlight jumps, each passed track gets struck ---------- */
   var queue = doc.querySelector('[data-queue]');
@@ -278,7 +293,12 @@
       if ((p.index === 0 ? '' : '#' + p.id) !== location.hash) history.replaceState(null, '', url);
     }
   }
-  function setState(p, s) { p.state = s; p.el.setAttribute('data-state', s); }
+  function setState(p, s) {
+    p.state = s; p.el.setAttribute('data-state', s);
+    // The final NEXT control can be taller than Show all (notably on phones).
+    // Refit after it becomes visible so terms cannot sit underneath navigation.
+    if (s === 'done' && queueFit) queueFit();
+  }
   function clearPlan(p) {
     p.timers.forEach(clearTimeout);
     p.timers = [];
@@ -316,6 +336,7 @@
     var hr = head.getBoundingClientRect();
     var pr = box.getBoundingClientRect();
     p.el.style.setProperty('--hd', Math.round((pr.top + pr.height / 2) - (hr.top + hr.height / 2)) + 'px');
+    p.el.style.setProperty('--title-scale', String(Math.min(1.4, (pr.width - 8) / Math.max(1, hr.width))));
     p.el.classList.add('is-title');
   }
   function textLen(group) {
