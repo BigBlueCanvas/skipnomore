@@ -7,7 +7,7 @@
 /* ---------- Fonts (self-hosted, OFL) ---------- */
 @font-face {
   font-family: "Archivo";
-  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611071208") format("woff2");
+  src: url("../assets/fonts/archivo-latin-wdth-normal.woff2?v=202611071431") format("woff2");
   font-weight: 100 900;
   font-stretch: 62% 125%;
   font-style: normal;
@@ -15,14 +15,14 @@
 }
 @font-face {
   font-family: "Inter";
-  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611071208") format("woff2");
+  src: url("../assets/fonts/inter-latin-wght-normal.woff2?v=202611071431") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Bangers";
-  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611071208") format("woff2");
+  src: url("../assets/fonts/bangers-latin-400-normal.woff2?v=202611071431") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -418,7 +418,18 @@ button { font: inherit; color: inherit; }
 .section__head { text-align: center; }
 
 /* ---------- Comic panels ---------- */
-.panel { position: relative; margin: 0; min-width: 0; }
+.panel { position: relative; margin: 0; min-width: 0; isolation: isolate; }
+/* Local light is a soft ellipse outside the clipped art, never an animated shadow.
+   It fades in only after the complete panel has settled; sections keep a separate,
+   static glow while every unrevealed panel and overlay is fully transparent. */
+.panel::before {
+  content: ""; position: absolute; inset: -14%; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at center, var(--panel-light, rgba(237, 36, 70, .12)), transparent 68%);
+  opacity: 1;
+}
+.js .panel[data-reveal="ink"]::before { opacity: 0; }
+.js .panel[data-reveal="ink"].is-done::before { opacity: 1; transition: opacity .65s ease; }
+.splash { --panel-light: rgba(61, 220, 132, .12); }
 .panel__art {
   position: relative;
   height: 100%;
@@ -426,7 +437,7 @@ button { font: inherit; color: inherit; }
   isolation: isolate;
   background: var(--ink);
   border: var(--bw) solid var(--ink);
-  box-shadow: var(--shadow), var(--bloom);
+  box-shadow: var(--shadow);
 }
 .panel__art > picture { width: 100%; height: 100%; }
 .panel__art img {
@@ -807,8 +818,8 @@ button { font: inherit; color: inherit; }
   z-index: 0;
   pointer-events: none;
   background: var(--glow, none);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 68% 65% at 50% 50%, #000 28%, transparent 72%);
+  mask-image: radial-gradient(ellipse 68% 65% at 50% 50%, #000 28%, transparent 72%);
 }
 .chapter::before, .section::before { /* section halftone: 3px dot screen, rotated 30deg, faded from one spot */
   content: "";
@@ -884,7 +895,7 @@ button { font: inherit; color: inherit; }
 .c-main { --r: -1deg; transform: rotate(var(--r)); }
 .c-screen { --r: 1.6deg; transform: rotate(var(--r)); }
 .c-head { --r: -2deg; transform: rotate(var(--r)); }
-.ch3 .panel__art, .ch3 .skip-tile { box-shadow: var(--shadow), var(--bloom-strong); }
+.ch3 .panel__art, .ch3 .skip-tile { box-shadow: var(--shadow); }
 .cover .btn--store.is-primary { box-shadow: 4px 4px 0 var(--ink), var(--bloom-strong); }
 .caption--alarm { --r: -1.5deg; }
 .skip-tile {
@@ -1202,7 +1213,7 @@ button { font: inherit; color: inherit; }
 }
 .about {
   max-width: 64ch !important;
-  margin-top: clamp(36px, 5vw, 56px) !important;
+  margin: clamp(20px, 3vw, 36px) auto 0 !important;
   text-align: center;
   font-size: clamp(1.02rem, 1.4vw, 1.18rem);
   color: var(--muted);
@@ -1782,20 +1793,19 @@ button { font: inherit; color: inherit; }
 /* =========================================================
    Reveal motion (only when JS is running)
    ========================================================= */
-.js [data-reveal="ink"]:not(.panel),
-.js .panel[data-reveal="ink"] > .panel__art {
-  clip-path: inset(-220px 100% -220px -220px);
-  transition: clip-path .95s var(--ease-ink) var(--d, 0s);
+.js [data-reveal="ink"] {
+  /* Hide the entire boxed item, including its frame, vignette, halftone and captions.
+     A negative-inset wipe leaves a visible strip of border/bloom even at 100% right. */
+  opacity: 0;
+  translate: 0 10px;
+  transition: opacity .7s ease var(--d, 0s), translate .7s var(--ease-out) var(--d, 0s);
 }
+.js [data-reveal="ink"].is-in { opacity: 1; translate: none; }
 .js [data-reveal="ink"] .panel__art img {
-  transform: scale(1.12);
-  transition: transform 1.4s var(--ease-out) var(--d, 0s);
+  transform: scale(1.035);
+  transition: transform .7s var(--ease-out) var(--d, 0s);
 }
-.js [data-reveal="ink"].is-in:not(.panel),
-.js .panel[data-reveal="ink"].is-in > .panel__art { clip-path: inset(-220px -220px -220px -220px); }
 .js [data-reveal="ink"].is-in .panel__art img { transform: none; }
-.js [data-reveal="ink"].is-done:not(.panel),
-.js .panel[data-reveal="ink"].is-done > .panel__art { clip-path: none; }
 
 .js [data-reveal="caption"] {
   opacity: 0;
@@ -1850,6 +1860,8 @@ button { font: inherit; color: inherit; }
     clip-path: none !important;
   }
   .js [data-reveal="caption"], .js [data-reveal="slide"], .js [data-reveal="pop"], .js [data-reveal] .panel__art img { transform: none !important; }
+  .js [data-reveal="ink"] { translate: none !important; }
+  .js .panel[data-reveal="ink"]::before { opacity: 1; }
   .js .tag[data-reveal="pop"] { transform: rotate(-1.5deg) !important; }
   @media (max-width: 599px) { .js .tag[data-reveal="pop"] { transform: none !important; } }
   .js .turn--ominous[data-reveal] { transform: rotate(-3deg) !important; }
@@ -2003,7 +2015,7 @@ button { font: inherit; color: inherit; }
 .js .page__head[data-reveal] {
   transition: opacity .5s ease, transform .6s var(--ease-out), translate .8s var(--ease-out), scale .8s var(--ease-out);
 }
-.chapter.is-title .page__head { translate: 0 var(--hd, 0px); scale: 1.4; }
+.chapter.is-title .page__head { translate: 0 var(--hd, 0px); scale: var(--title-scale, 1); }
 
 /* stage: the grid keeps its designed ratio (--R) and is scaled to fit the space left */
 .page__stage {
@@ -2184,7 +2196,7 @@ button { font: inherit; color: inherit; }
 .ch4__grid { --R: 1.9; grid-template-columns: repeat(4, 1fr); grid-template-rows: 19fr 32fr; grid-template-areas: "a b c d" "s s s s"; row-gap: calc(var(--gut) + 6px); }
 .k-store { grid-area: a; } .k-pop { grid-area: b; } .p-on { grid-area: c; } .p-mug4 { grid-area: d; }
 .splash { grid-area: s; justify-self: center; height: 100%; width: auto; max-width: 100%; aspect-ratio: 1920 / 963; margin: 0; }
-.splash .panel__art { box-shadow: var(--shadow), 0 0 120px -30px rgba(61, 220, 132, .25), var(--bloom); }
+.splash .panel__art { box-shadow: var(--shadow); }
 .p-mug4 img { object-position: 50% 62%; filter: brightness(1.15); }
 
 /* drawn store card + popup: pressed / cursor / switch states (final state without JS) */
@@ -2192,16 +2204,17 @@ button { font: inherit; color: inherit; }
 .ui-btn__a { opacity: 0; }
 .ui-btn__b { opacity: 1; }
 .ui-press { background: #1f9d57; transition: background-color .2s; }
-.js .k-store:not(:has(.sfx--k1.is-in)) .ui-btn__a,
-.js .k-pop:not(:has(.sfx--k2.is-in)) .ui-btn__a { opacity: 1; }
-.js .k-store:not(:has(.sfx--k1.is-in)) .ui-btn__b,
-.js .k-pop:not(:has(.sfx--k2.is-in)) .ui-btn__b { opacity: 0; }
-.js .k-store:not(:has(.sfx--k1.is-in)) .ui-press,
-.js .k-pop:not(:has(.sfx--k2.is-in)) .ui-press { background: var(--red-ui); }
+.js .k-store:not(:has(.sfx--k1.is-in)) .ui-btn__a { opacity: 1; }
+.js .k-store:not(:has(.sfx--k1.is-in)) .ui-btn__b { opacity: 0; }
+.js .k-store:not(:has(.sfx--k1.is-in)) .ui-press { background: var(--red-ui); }
+.ui-trial-active {
+  display: block; padding: 7% 4%; border: 2px solid #17683b; border-radius: 4px;
+  color: #125d32; background: #e0f5e8; text-align: center;
+  font: 800 max(8px, 6cqmin)/1.25 system-ui, sans-serif;
+}
 .ui-cursor { transform: none; opacity: 1; transition: transform .65s var(--ease-out) .3s, opacity .25s ease .3s; }
 .js [data-chapter] .panel:not(.is-in) .ui-cursor { transform: translate(40cqmin, 30cqmin); opacity: 0; }
-.js .k-store:has(.sfx--k1.is-in) .ui-cursor,
-.js .k-pop:has(.sfx--k2.is-in) .ui-cursor { animation: cursor-press .3s ease; }
+.js .k-store:has(.sfx--k1.is-in) .ui-cursor { animation: cursor-press .3s ease; }
 @keyframes cursor-press { 50% { scale: .82; } }
 .toggle__on-bg { opacity: 1; transition: opacity .25s; }
 .toggle__knob { transform: translateX(18px); transition: transform .25s var(--ease-out); }
@@ -2602,5 +2615,5 @@ html:not(.js) .cover__frame { min-height: 560px; }
   .final .store-row .btn__label { font-size: .8rem; white-space: normal; line-height: 1.1; }
   .final .also { margin: 8px 0 4px; }
   .final .also__note, .final .download__line { font-size: .74rem; margin: 2px 0; }
-  .final__small { margin-top: 6px; font-size: .78rem; line-height: 1.35; }
+  .final__small { margin-top: 6px; font-size: .82rem; line-height: 1.35; }
 }
