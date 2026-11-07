@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorry to see you go | YouTube Music Skip Solution</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="You uninstalled YouTube Music Skip Solution. One click tells us why.">
+<meta name="theme-color" content="#121827">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="128x128" href="../assets/img/icon-128.png?v=202611070159">
+<!-- Uninstall survey, opened by the extension (runtime.setUninstallURL) with ?v=<version>&b=<chrome|firefox>.
+     noindex, not in sitemap.xml, not linked from the main page. One click sends one Umami event
+     "uninstall-reason" {reason, v, b}; nothing else. Without JS the reasons are plain #thanks links. -->
+<script>
+  var UMAMI_WEBSITE_ID = "eec95f31-0b55-4b0c-b859-6506064d4aaf";
+  var UMAMI_DOMAINS = "skipnomore.site,www.skipnomore.site";
+  if (UMAMI_WEBSITE_ID && /^https?:$/.test(location.protocol) &&
+      UMAMI_DOMAINS.split(',').indexOf(location.hostname.toLowerCase()) !== -1 &&
+      !document.querySelector('script[src="https://cloud.umami.is/script.js"]')) {
+    (function () {
+      var s = document.createElement('script');
+      s.defer = true;
+      s.src = 'https://cloud.umami.is/script.js';
+      s.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
+      s.setAttribute('data-domains', UMAMI_DOMAINS);
+      document.head.appendChild(s);
+    })();
+  }
+</script>
+<link rel="stylesheet" href="../css/style.css?v=202611070159">
+<style>
+  .bye { max-width: 760px; margin: 0 auto; padding: clamp(40px, 8vw, 88px) 16px clamp(48px, 8vw, 96px); }
+  .bye h1 { font-size: clamp(3rem, 11vw, 5.6rem); margin-bottom: 24px; }
+  .bye__lead { color: var(--muted); font-size: 1.1rem; margin-bottom: 20px; }
+  .bye__reasons { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .bye__reason {
+    display: flex; align-items: center; min-height: 60px; width: 100%; padding: .7em 1.1em;
+    background: var(--slate); color: #fff; border: 3px solid var(--ink); border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--ink); text-decoration: none;
+    font: 800 1.15rem/1.15 var(--f-display); font-stretch: 88%; letter-spacing: .03em; text-transform: uppercase;
+    transition: transform .16s var(--ease-out), box-shadow .16s var(--ease-out), background-color .16s;
+  }
+  .bye__reason:hover { color: #fff; background: var(--red-ui); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .bye__reason:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  @media (min-width: 640px) { .bye__reasons { grid-template-columns: 1fr 1fr; } .bye__reasons li:last-child { grid-column: 1 / -1; } }
+  .bye__thanks { display: none; margin: 0; font: 900 clamp(2rem, 7vw, 3rem)/1 var(--f-display); font-stretch: 74%; text-transform: uppercase; }
+  .bye__thanks:target, .bye.is-done .bye__thanks { display: block; }
+  .bye:has(.bye__thanks:target) .bye__ask, .bye.is-done .bye__ask { display: none; }
+  .bye__thanks:focus { outline: none; }
+  .bye__back { margin-top: clamp(48px, 8vw, 72px); padding-top: 28px; border-top: 3px solid var(--slate); }
+  .bye__back h2 { font: 900 1.6rem/1.1 var(--f-display); font-stretch: 74%; text-transform: uppercase; margin-bottom: 8px; }
+  .bye__back p { color: var(--muted); }
+  .bye__back .store-row { justify-content: flex-start; }
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="mark-chrome" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M16 8a8 8 0 0 1-7.022 7.94l1.902-7.098a3 3 0 0 0 .05-1.492A3 3 0 0 0 10.237 6h5.511A8 8 0 0 1 16 8M0 8a8 8 0 0 0 7.927 8l1.426-5.321a3 3 0 0 1-.723.255 3 3 0 0 1-1.743-.147 3 3 0 0 1-1.043-.7L.633 4.876A8 8 0 0 0 0 8m5.004-.167L1.108 3.936A8.003 8.003 0 0 1 15.418 5H8.066a3 3 0 0 0-1.252.243 2.99 2.99 0 0 0-1.81 2.59M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/></symbol>
+  <symbol id="mark-firefox" viewBox="0 0 16 16"><path fill="currentColor" d="M13.384 3.408c.535.276 1.22 1.152 1.556 1.963a8 8 0 0 1 .503 3.897l-.009.077-.026.224A7.758 7.758 0 0 1 .006 8.257v-.04q.025-.545.114-1.082c.01-.074.075-.42.09-.489l.01-.051a6.6 6.6 0 0 1 1.041-2.35q.327-.465.725-.87.35-.358.758-.65a1.5 1.5 0 0 1 .26-.137c-.018.268-.04 1.553.268 1.943h.003a5.7 5.7 0 0 1 1.868-1.443 3.6 3.6 0 0 0 .021 1.896q.105.07.2.152c.107.09.226.207.454.433l.068.066.009.009a2 2 0 0 0 .213.18c.383.287.943.563 1.306.741.201.1.342.168.359.193l.004.008c-.012.193-.695.858-.933.858-2.206 0-2.564 1.335-2.564 1.335.087.997.714 1.839 1.517 2.357a4 4 0 0 0 .439.241q.114.05.228.094c.325.115.665.18 1.01.194 3.043.143 4.155-2.804 3.129-4.745v-.001a3 3 0 0 0-.731-.9 3 3 0 0 0-.571-.37l-.003-.002a2.68 2.68 0 0 1 1.87.454 3.92 3.92 0 0 0-3.396-1.983q-.116.001-.23.01l-.042.003V4.31h-.002a4 4 0 0 0-.8.14 7 7 0 0 0-.333-.314 2 2 0 0 0-.2-.152 4 4 0 0 1-.088-.383 5 5 0 0 1 1.352-.289l.05-.003c.052-.004.125-.01.205-.012C7.996 2.212 8.733.843 10.17.002l-.003.005.003-.001.002-.002h.002l.002-.002h.015a.02.02 0 0 1 .012.007 2.4 2.4 0 0 0 .206.48q.09.153.183.297c.49.774 1.023 1.379 1.543 1.968.771.874 1.512 1.715 2.036 3.02l-.001-.013a8 8 0 0 0-.786-2.353"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../" aria-label="YouTube Music Skip Solution, home">
+      <img src="../assets/img/icon-128.png?v=202611070159" width="128" height="128" alt="" class="brand__logo">
+      <span class="brand__name" aria-hidden="true"><span class="brand__yt">YouTube Music </span>Skip Solution</span>
+    </a>
+  </div>
+</header>
+<main id="main" class="bye">
+  <h1 class="display"><span class="hl-white">Sorry to see</span> <span class="hl-red">you go.</span></h1>
+  <div class="bye__ask">
+    <p class="bye__lead">What made you uninstall? One click, no typing.</p>
+    <ul class="bye__reasons">
+      <li><a class="bye__reason" href="#thanks" data-reason="didnt-fix">It didn&rsquo;t fix my problem</a></li>
+      <li><a class="bye__reason" href="#thanks" data-reason="not-needed">I don&rsquo;t need it anymore</a></li>
+      <li><a class="bye__reason" href="#thanks" data-reason="too-expensive">Too expensive</a></li>
+      <li><a class="bye__reason" href="#thanks" data-reason="bug">Something broke / bug</a></li>
+      <li><a class="bye__reason" href="#thanks" data-reason="other">Other</a></li>
+    </ul>
+  </div>
+  <p class="bye__thanks hl-white" id="thanks" tabindex="-1" role="status">Thanks, that helps.</p>
+
+  <section class="bye__back" aria-labelledby="back-title">
+    <h2 id="back-title">Changed your mind?</h2>
+    <p>Reinstall in one click. Your purchase is restored from the extension.</p>
+    <div class="store-row">
+      <a class="btn btn--store" data-store="chrome" data-section="bye"
+         href="https://chromewebstore.google.com/detail/youtube-music-skip-soluti/gbchceofniiamjghihdjgecmmlecogld?utm_source=website&amp;utm_medium=bye" data-umami-event="store-click" data-umami-event-store="chrome" data-umami-event-section="bye">
+        <svg class="btn__mark" aria-hidden="true"><use href="#mark-chrome"/></svg>
+        <span class="btn__txt"><span class="btn__label">Get it for Chrome</span><span class="btn__sub">Chrome Web Store (also Edge, Brave, Opera)</span></span>
+      </a>
+      <a class="btn btn--store" data-store="firefox" data-section="bye"
+         href="https://addons.mozilla.org/en-US/firefox/addon/youtube-music-skip-solution/?utm_source=website&amp;utm_medium=bye" data-umami-event="store-click" data-umami-event-store="firefox" data-umami-event-section="bye">
+        <svg class="btn__mark" aria-hidden="true"><use href="#mark-firefox"/></svg>
+        <span class="btn__txt"><span class="btn__label">Get it for Firefox</span><span class="btn__sub">Firefox Add-ons</span></span>
+      </a>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer__inner">
+    <nav class="footer__links" aria-label="Footer">
+      <a href="../privacy.html">Privacy policy</a>
+    </nav>
+    <p class="footer__disclaimer">Not affiliated with, endorsed or sponsored by YouTube or Google. YouTube is a trademark of Google LLC.</p>
+    <p class="footer__copy">&copy; <span data-year>2026</span> BigBlueCanvas</p>
+  </div>
+</footer>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var v = /^\d{1,3}(\.\d{1,3}){0,3}$/.test(q.get('v') || '') ? q.get('v') : 'unknown';
+    var b = /^(chrome|firefox)$/.test(q.get('b') || '') ? q.get('b') : 'unknown';
+    var main = document.getElementById('main');
+    var thanks = document.getElementById('thanks');
+    // Umami loads deferred (production hostnames only): wait briefly for it, never queue elsewhere
+    function send(data, tries) {
+      if (window.umami && typeof window.umami.track === 'function') { window.umami.track('uninstall-reason', data); return; }
+      if (tries > 0) setTimeout(function () { send(data, tries - 1); }, 250);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-reason]'), function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (main.classList.contains('is-done')) return;
+        main.classList.add('is-done');
+        send({ reason: a.getAttribute('data-reason'), v: v, b: b }, 20);
+        thanks.focus();
+      });
+    });
+    // Install button for the browser it was removed from (?b=), else the site's own detection
+    document.addEventListener('DOMContentLoaded', function () {
+      var STORE = { chrome: 'chrome', edge: 'chrome', brave: 'chrome', opera: 'chrome', vivaldi: 'chrome', firefox: 'firefox' };
+      var pref = b !== 'unknown' ? b : STORE[document.documentElement.getAttribute('data-browser')];
+      if (!pref) return;
+      Array.prototype.forEach.call(document.querySelectorAll('.bye__back [data-store]'), function (el) {
+        if (el.getAttribute('data-store') === pref) el.classList.add('is-primary'); else el.hidden = true;
+      });
+    });
+  })();
+</script>
+<script src="../js/main.js?v=202611070159" defer></script>
+</body>
+</html>
