@@ -1,0 +1,118 @@
+# Submit every published URL to IndexNow (Bing, Yandex, Naver, Seznam) after each successful
+# GitHub Pages deployment of main. No secrets: the key is the public file at the site root.
+# One submission per deploy; the POST is never retried.
+name: IndexNow
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the deployed commit (key file only)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            /*.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Wait for the live key file and sitemap, then submit once
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, re, sys, time, urllib.error, urllib.request
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          from urllib.parse import urlsplit
+
+          HOST = "skipnomore.site"
+          SITE = "https://" + HOST + "/"
+          UA = "skipnomore-indexnow-action/1.0 (+" + SITE + ")"
+
+          keys = [p for p in Path(".").glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
+          if len(keys) != 1 or keys[0].read_bytes() != keys[0].stem.encode("ascii"):
+              sys.exit("::error::expected exactly one <32-hex>.txt key file containing only its key")
+          key = keys[0].stem
+          key_location = SITE + key + ".txt"
+
+          def get(url):
+              req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      return r.status, r.read()
+              except urllib.error.HTTPError as e:
+                  return e.code, b""
+              except Exception as e:
+                  return 0, str(e).encode()
+
+          # Wait up to ~5 minutes for the deployment to be visible (reads only; no submission yet).
+          urls = None
+          for attempt in range(1, 31):
+              ks, kb = get(key_location)
+              ss, sb = get(SITE + "sitemap.xml")
+              if ks == 200 and kb == key.encode("ascii") and ss == 200:
+                  try:
+                      ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+                      urls = [l.text.strip() for l in ET.fromstring(sb).iter(ns + "loc") if l.text]
+                      break
+                  except ET.ParseError as e:
+                      print("attempt %d: sitemap not parseable yet (%s)" % (attempt, e))
+              else:
+                  print("attempt %d: key HTTP %d (%s), sitemap HTTP %d" % (attempt, ks, "match" if kb == key.encode() else "no match", ss))
+              time.sleep(10)
+          if urls is None:
+              sys.exit("::error::live key file/sitemap not ready after ~5 minutes; nothing submitted")
+
+          def allowed(u):
+              p = urlsplit(u)
+              return p.scheme == "https" and p.netloc == HOST and not p.fragment
+          skipped = [u for u in urls if not allowed(u)]
+          urls = list(dict.fromkeys(u for u in urls if allowed(u)))
+          if skipped:
+              print("skipped non-%s URLs: %s" % (SITE, ", ".join(skipped)))
+          if not urls or len(urls) > 10000:
+              sys.exit("::error::need 1-10000 URLs from the sitemap, got %d" % len(urls))
+
+          payload = {"host": HOST, "key": key, "keyLocation": key_location, "urlList": urls}
+          print(json.dumps(payload, indent=2))
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", method="POST",
+                                       data=json.dumps(payload).encode("utf-8"),
+                                       headers={"Content-Type": "application/json; charset=utf-8", "User-Agent": UA})
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  code = r.status
+          except urllib.error.HTTPError as e:
+              code = e.code
+          except Exception as e:
+              sys.exit("::error::IndexNow request failed (%s); not retried" % e)
+          meaning = {
+              200: "OK: URLs submitted",
+              202: "Accepted: key validation pending",
+              400: "Bad request: invalid payload",
+              403: "Forbidden: key not valid (key file missing or content mismatch)",
+              422: "Unprocessable: URLs not on host, or key does not match schema",
+              429: "Too many requests: rate limited, wait before the next deploy",
+          }.get(code, "unexpected response")
+          print("IndexNow HTTP %d: %s (%d URLs)" % (code, meaning, len(urls)))
+          if code not in (200, 202):
+              sys.exit("::error::IndexNow HTTP %d: %s; not retried" % (code, meaning))
+          PY
